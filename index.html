@@ -249,8 +249,7 @@
     #lightbox.open { display:flex; }
 
     /* ANIMATIONS */
-    .fade-in { opacity:0; transform:translateY(20px); transition:opacity 0.5s ease,transform 0.5s ease; }
-    .fade-in.visible { opacity:1; transform:translateY(0); }
+    .fade-in { opacity: 1; transform: none; }
 
     /* RESPONSIVE */
     @media(max-width:1000px) { .benefits-grid { grid-template-columns:repeat(3,1fr); } }
@@ -301,23 +300,23 @@
       <!-- Gallery -->
       <div>
         <div class="hero-image-main" id="main-img-wrap" onclick="openLightbox()">
-          <img id="main-product-img" src="/images/caneta-1.jpg" alt="Caneta Premium MZ - Imagem Principal" onerror="this.onerror=null; this.src='images/caneta-1.jpg';">
+          <img id="main-product-img" src="images/caneta-1.jpg" alt="Caneta Premium MZ - Imagem Principal">
         </div>
         <div class="thumbnails">
           <div class="thumb active" onclick="selectThumb(this,0)">
-            <img src="/images/caneta-1.jpg" alt="Caneta Premium - Miniatura 1" onerror="this.onerror=null; this.src='images/caneta-1.jpg';">
+            <img src="images/caneta-1.jpg" alt="Caneta Premium - Miniatura 1">
           </div>
           <div class="thumb" onclick="selectThumb(this,1)">
-            <img src="/images/caneta-2.jpg" alt="Caneta Premium - Miniatura 2" onerror="this.onerror=null; this.src='images/caneta-2.jpg';">
+            <img src="images/caneta-2.jpg" alt="Caneta Premium - Miniatura 2">
           </div>
           <div class="thumb" onclick="selectThumb(this,2)">
-            <img src="/images/caneta-3.jpg" alt="Caneta Premium - Miniatura 3" onerror="this.onerror=null; this.src='images/caneta-3.jpg';">
+            <img src="images/caneta-3.jpg" alt="Caneta Premium - Miniatura 3" onerror="this.onerror=null; this.src='images/caneta-1.jpg';">
           </div>
           <div class="thumb" onclick="selectThumb(this,3)">
-            <img src="/images/caneta-4.jpg" alt="Caneta Premium - Miniatura 4" onerror="this.onerror=null; this.src='images/caneta-4.jpg';">
+            <img src="images/caneta-4.jpg" alt="Caneta Premium - Miniatura 4" onerror="this.onerror=null; this.src='images/caneta-2.jpg';">
           </div>
           <div class="thumb" onclick="selectThumb(this,4)">
-            <img src="/images/caneta-5.jpg" alt="Caneta Premium - Miniatura 5" onerror="this.onerror=null; this.src='images/caneta-5.jpg';">
+            <img src="images/caneta-5.jpg" alt="Caneta Premium - Miniatura 5" onerror="this.onerror=null; this.src='images/caneta-1.jpg';">
           </div>
         </div>
       </div>
@@ -841,11 +840,11 @@
 
   /* === GALLERY === */
   const productImages = [
-    '/images/caneta-1.jpg',
-    '/images/caneta-2.jpg',
-    '/images/caneta-3.jpg',
-    '/images/caneta-4.jpg',
-    '/images/caneta-5.jpg'
+    'images/caneta-1.jpg',
+    'images/caneta-2.jpg',
+    'images/caneta-3.jpg',
+    'images/caneta-4.jpg',
+    'images/caneta-5.jpg'
   ];
 
   function selectThumb(el, idx) {
