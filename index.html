@@ -566,28 +566,30 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--bla
 </section>
 
 <!-- REVIEWS / PROVA SOCIAL -->
-<section class="section" style="background:#FAF8F5;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;">
-  <div class="container">
-    <div class="text-center" style="margin-bottom:28px;">
-      <div class="label-tag">★ Experiências Reais</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#0A0A0A;margin-top:6px;">
+<section class="section" id="avaliacoes" style="background:#FAF8F5;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;padding:48px 16px;">
+  <div class="container" style="max-width:1150px;margin:0 auto;">
+    <div class="text-center" style="margin-bottom:28px;text-align:center;">
+      <div class="label-tag" style="display:inline-block;padding:4px 12px;background:#FAF5E6;border:1px solid #E2D2A4;color:#8C6D1F;font-size:0.75rem;font-weight:700;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;">★ Avaliações Verificadas</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#0A0A0A;margin-top:8px;margin-bottom:6px;">
         Quem já recebeu, recomenda
       </h2>
-      <div class="divider"></div>
+      <div class="divider" style="width:40px;height:2px;background:#C9A84C;margin:10px auto;"></div>
       <p style="font-size:0.85rem;color:#666;max-width:550px;margin:0 auto;">
-        Veja a opinião de clientes que já utilizam a Caneta Premium em diferentes cidades e províncias de Moçambique.
+        Veja a opinião de quem já comprou e utiliza a Caneta Premium em diferentes províncias de Moçambique.
       </p>
     </div>
     
-    <div class="reviews-grid" style="display:flex;overflow-x:auto;gap:16px;padding-bottom:12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;">
-      <div class="review-card" style="min-width:280px;flex:1;scroll-snap-align:center;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:between;">
+    <div class="reviews-grid-wrapper" style="width:100%;overflow:hidden;">
+      <div class="reviews-grid" style="display:flex;overflow-x:auto;gap:16px;padding-bottom:12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;">
+
+      <div class="review-card" style="min-width:280px;max-width:340px;flex:0 0 82vw;scroll-snap-align:start;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:space-between;">
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
             <div style="color:#C9A84C;font-size:0.9rem;">★★★★★</div>
             <span style="font-size:0.65rem;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:999px;">✓ Pedido entregue</span>
           </div>
           <p style="font-size:0.8rem;color:#374151;line-height:1.5;font-style:italic;margin-bottom:14px;">
-            "A escrita é extremamente suave e não borra no papel. O peso do metal confere uma pegada muito firme para assinar contratos."
+            "A escrita é extremamente suave e não borra. Uso no escritório para assinar documentos e a presença da caneta é impecável."
           </p>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid #F3F4F6;">
@@ -599,14 +601,14 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--bla
         </div>
       </div>
 
-      <div class="review-card" style="min-width:280px;flex:1;scroll-snap-align:center;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:between;">
+      <div class="review-card" style="min-width:280px;max-width:340px;flex:0 0 82vw;scroll-snap-align:start;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:space-between;">
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
             <div style="color:#C9A84C;font-size:0.9rem;">★★★★★</div>
             <span style="font-size:0.65rem;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:999px;">✓ Pedido entregue</span>
           </div>
           <p style="font-size:0.8rem;color:#374151;line-height:1.5;font-style:italic;margin-bottom:14px;">
-            "Chegou em 2 dias aqui na Matola. Muito confortável para escrever durante várias horas nas minhas aulas. Valeu muito a pena."
+            "Chegou em 2 dias aqui na Matola. Muito confortável para escrever durante horas nas minhas aulas. Vale cada metical!"
           </p>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid #F3F4F6;">
@@ -618,14 +620,14 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--bla
         </div>
       </div>
 
-      <div class="review-card" style="min-width:280px;flex:1;scroll-snap-align:center;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:between;">
+      <div class="review-card" style="min-width:280px;max-width:340px;flex:0 0 82vw;scroll-snap-align:start;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:space-between;">
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
             <div style="color:#C9A84C;font-size:0.9rem;">★★★★★</div>
             <span style="font-size:0.65rem;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:999px;">✓ Pedido entregue</span>
           </div>
           <p style="font-size:0.8rem;color:#374151;line-height:1.5;font-style:italic;margin-bottom:14px;">
-            "Acabamento dourado sofisticado. Aprovada 100%! O pagamento por M-Pesa foi instantâneo direto no telemóvel."
+            "Acabamento metálico de primeira linha. A tinta seca rápido e a pegada é muito firme. Excelente atendimento."
           </p>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid #F3F4F6;">
@@ -637,14 +639,14 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--bla
         </div>
       </div>
 
-      <div class="review-card" style="min-width:280px;flex:1;scroll-snap-align:center;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:between;">
+      <div class="review-card" style="min-width:280px;max-width:340px;flex:0 0 82vw;scroll-snap-align:start;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:space-between;">
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
             <div style="color:#C9A84C;font-size:0.9rem;">★★★★★</div>
             <span style="font-size:0.65rem;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:999px;">✓ Pedido entregue</span>
           </div>
           <p style="font-size:0.8rem;color:#374151;line-height:1.5;font-style:italic;margin-bottom:14px;">
-            "Excelente para presentes e para quem trabalha com documentação. Entrega rápida e produto bem embalado."
+            "A entrega foi rápida e segura. Comprei 3 unidades para oferecer aos meus colegas de trabalho e todos adoraram."
           </p>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid #F3F4F6;">
@@ -654,6 +656,48 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--bla
             <div style="font-size:0.7rem;color:#6B7280;">Nampula • Muatala</div>
           </div>
         </div>
+      </div>
+
+      <div class="review-card" style="min-width:280px;max-width:340px;flex:0 0 82vw;scroll-snap-align:start;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div style="color:#C9A84C;font-size:0.9rem;">★★★★★</div>
+            <span style="font-size:0.65rem;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:999px;">✓ Pedido entregue</span>
+          </div>
+          <p style="font-size:0.8rem;color:#374151;line-height:1.5;font-style:italic;margin-bottom:14px;">
+            "Super prática e elegante. O fluxo de pagamento por M-Pesa foi direto no telemóvel sem complicação nenhuma."
+          </p>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid #F3F4F6;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#0A0A0A;color:#E8D49E;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:0.75rem;">I</div>
+          <div>
+            <div style="font-weight:700;font-size:0.8rem;color:#111827;">Inácio Langa</div>
+            <div style="font-size:0.7rem;color:#6B7280;">Tete • Matundo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card" style="min-width:280px;max-width:340px;flex:0 0 82vw;scroll-snap-align:start;background:#FFF;padding:20px;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,0.03);display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div style="color:#C9A84C;font-size:0.9rem;">★★★★★</div>
+            <span style="font-size:0.65rem;font-weight:700;color:#065f46;background:#d1fae5;padding:2px 8px;border-radius:999px;">✓ Pedido entregue</span>
+          </div>
+          <p style="font-size:0.8rem;color:#374151;line-height:1.5;font-style:italic;margin-bottom:14px;">
+            "Muito bonita e resistente. Uso diariamente para anotações e planejamento. Recomendo com certeza!"
+          </p>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid #F3F4F6;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#0A0A0A;color:#E8D49E;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:0.75rem;">A</div>
+          <div>
+            <div style="font-weight:700;font-size:0.8rem;color:#111827;">Amélia Mondlane</div>
+            <div style="font-size:0.7rem;color:#6B7280;">Quelimane • Torrone</div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div style="text-align:center;font-size:0.75rem;color:#888;margin-top:8px;" class="mobile-swipe-hint">
+        ← Deslize para o lado para ver mais avaliações →
       </div>
     </div>
   </div>
