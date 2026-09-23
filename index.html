@@ -698,6 +698,7 @@
       <!-- ETAPA 2: PROCESSAMENTO USSD & DIGITAÇÃO DO PIN -->
       <!-- ETAPA 2: AGUARDANDO CONFIRMAÇÃO NO TELEMÓVEL -->
       <!-- ETAPA 2: MENSAGEM SIMPLES M-PESA -->
+      <!-- ETAPA 2: MENSAGEM SIMPLES M-PESA -->
       <div id="processing-view" style="display:none;padding:32px 24px;text-align:center;">
         <div style="width:44px;height:44px;border:4px solid #C9A84C;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px;"></div>
 
@@ -708,6 +709,15 @@
         <p style="font-size:0.9rem;font-weight:600;color:#374151;margin-bottom:20px;">
           Confirme o pagamento no M-Pesa.
         </p>
+
+        <div id="api-error-box" style="display:none;padding:12px;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:10px;font-size:0.8rem;text-align:left;max-width:320px;margin:0 auto 16px;">
+          <strong>⚠️ Erro API ZumboPay:</strong> <span id="api-error-msg">Chave API inválida.</span>
+          <div id="api-key-config" style="margin-top:10px;padding-top:8px;border-top:1px solid #fecaca;">
+            <label style="display:block;font-size:0.75rem;font-weight:700;color:#111827;margin-bottom:4px;">Chave zk_live_... completa:</label>
+            <input type="text" id="manual-api-key" placeholder="Cole a sua chave zk_live_... aqui" style="width:100%;padding:6px;font-size:0.75rem;border:1px solid #d1d5db;border-radius:6px;font-family:monospace;box-sizing:border-box;">
+            <button type="button" onclick="retryPaymentWithKey()" style="margin-top:8px;width:100%;padding:6px;background:#dc2626;color:white;font-weight:700;font-size:0.75rem;border:none;border-radius:6px;cursor:pointer;">Tentar Novamente</button>
+          </div>
+        </div>
 
         <div style="background:#f9fafb;padding:16px;border-radius:12px;border:1px solid #e5e7eb;text-align:left;font-size:0.8rem;max-width:320px;margin:0 auto 20px;">
           <div style="display:flex;justify-content:space-between;color:#6b7280;margin-bottom:8px;">
@@ -798,6 +808,7 @@
   const PRICE = 120;
   let currentOrder = null;
   let pollingInterval = null;
+  let customKey = '';
 
   function openCheckout() {
     backToForm();
@@ -845,6 +856,13 @@
     return ok;
   }
 
+  function normalizePhone(p) {
+    let c = (p || '').replace(/\D/g, '');
+    if (c.startsWith('258') && c.length === 12) return c;
+    if (c.length === 9) return '258' + c;
+    return c;
+  }
+
   /* === SUBMIT ORDER & PENDING FLOW === */
   async function submitOrder(e) {
     e.preventDefault();
@@ -870,20 +888,29 @@
       status_pedido: 'em_processamento'
     };
 
-    // Transition to processing view
     document.getElementById('checkout-form').style.display = 'none';
     document.getElementById('processing-view').style.display = 'block';
     document.getElementById('modal-title').textContent = 'Pagamento M-Pesa';
+    document.getElementById('api-error-box').style.display = 'none';
 
     document.getElementById('ussd-phone').textContent = '+258 ' + payPhone;
     document.getElementById('ussd-total').textContent = total + ' MT';
 
-    // Start payment charge & status query polling
     sendPaymentAndPoll(currentOrder);
   }
 
+  function retryPaymentWithKey() {
+    const val = document.getElementById('manual-api-key').value.trim();
+    if (val) customKey = val;
+    document.getElementById('api-error-box').style.display = 'none';
+    if (currentOrder) sendPaymentAndPoll(currentOrder);
+  }
+
   async function sendPaymentAndPoll(order) {
+    let zumboRef = null;
+
     try {
+      // 1. Tenta backend local / Proxy API
       const res = await fetch('/api/pagamento', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -892,7 +919,8 @@
           msisdn: order.tel_pagamento,
           ref: order.id,
           customer_name: order.nome,
-          order_details: order
+          order_details: order,
+          api_key: customKey || undefined
         })
       });
 
@@ -902,10 +930,58 @@
           confirmOrderSuccess();
           return;
         }
+        if (data && data.status === 'pending') {
+          zumboRef = data.reference;
+        }
+      } else {
+        const errData = await res.json().catch(() => ({}));
+        if (errData.error?.code === 'invalid_api_key') {
+          showApiError('A chave API zk_live_... da ZumboPay está incompleta ou inválida.');
+        }
       }
-    } catch (_) {}
+    } catch (_) {
+      // 2. Direct CORS API Fallback (para GitHub Pages / Lovable estático)
+      try {
+        const apiKey = customKey || 'zk_live_371ffd52d6';
+        const formattedPhone = normalizePhone(order.tel_pagamento);
 
-    // Active polling for status / Query Txn
+        const zRes = await fetch('https://zumbopay.com/api/public/v1/charges', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + apiKey,
+            'X-Merchant-Id': 'MCH_6000FA2DF2',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Idempotency-Key': order.id
+          },
+          body: JSON.stringify({
+            wallet_id: '312584',
+            amount: order.total,
+            msisdn: formattedPhone,
+            customer_name: order.nome,
+            source_id: order.id
+          })
+        });
+
+        const zData = await zRes.json();
+        if (zRes.status === 200 && zData.data?.status === 'success') {
+          confirmOrderSuccess();
+          return;
+        }
+
+        if (zRes.status === 202 || zData.data?.status === 'pending') {
+          zumboRef = zData.data?.reference;
+        }
+
+        if (zRes.status === 401 || zData.error?.code === 'invalid_api_key') {
+          showApiError('Chave API zk_live_... da ZumboPay incompleta ou inválida.');
+        }
+      } catch (err) {
+        console.error('Direct ZumboPay error:', err);
+      }
+    }
+
+    // Direct status query polling
     if (pollingInterval) clearInterval(pollingInterval);
     pollingInterval = setInterval(async () => {
       try {
@@ -915,10 +991,41 @@
           if (sData && sData.status_pagamento === 'Pagamento confirmado') {
             clearInterval(pollingInterval);
             confirmOrderSuccess();
+            return;
           }
         }
       } catch (_) {}
+
+      if (zumboRef) {
+        try {
+          const apiKey = customKey || 'zk_live_371ffd52d6';
+          const zRes = await fetch('https://zumbopay.com/api/public/v1/charges/' + zumboRef, {
+            method: 'GET',
+            headers: {
+              'Authorization': 'Bearer ' + apiKey,
+              'X-Merchant-Id': 'MCH_6000FA2DF2',
+              'Accept': 'application/json'
+            }
+          });
+          if (zRes.ok) {
+            const zData = await zRes.json();
+            if (zData.data?.status === 'success' || zData.data?.status === 'completed') {
+              clearInterval(pollingInterval);
+              confirmOrderSuccess();
+            }
+          }
+        } catch (_) {}
+      }
     }, 3000);
+  }
+
+  function showApiError(msg) {
+    const box = document.getElementById('api-error-box');
+    const txt = document.getElementById('api-error-msg');
+    if (box && txt) {
+      txt.textContent = msg;
+      box.style.display = 'block';
+    }
   }
 
   function backToForm() {
