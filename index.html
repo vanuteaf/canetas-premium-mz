@@ -904,72 +904,43 @@
   async function sendPaymentAndPoll(order) {
     let zumboRef = null;
 
+    const apiKey = 'zk_live_84b0076d67b5f4cd50969d13906e1e562c4bec28c06e35aa';
+    const merchantId = 'MCH_6000FA2DF2';
+    const formattedPhone = normalizePhone(order.tel_pagamento || order.telefone);
+
     try {
-      const res = await fetch('/api/pagamento', {
+      const zRes = await fetch('https://zumbopay.com/api/public/v1/charges', {
         method: 'POST',
-        headers: {'Content-Type':'application/json'},
+        headers: {
+          'Authorization': 'Bearer ' + apiKey,
+          'X-Merchant-Id': merchantId,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Idempotency-Key': order.id
+        },
         body: JSON.stringify({
-          quantidade: order.quantidade,
-          msisdn: order.tel_pagamento,
-          ref: order.id,
+          wallet_id: MPESA_WALLET_ID,
+          amount: order.total,
+          msisdn: formattedPhone,
           customer_name: order.nome,
-          order_details: order
+          source_id: order.id
         })
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.status === 'success') {
-          confirmOrderSuccess();
-          return;
-        }
-        if (data && data.status === 'pending') {
-          zumboRef = data.reference;
-        }
-      } else {
-        const errData = await res.json().catch(() => ({}));
-        if (errData.message) {
-          showApiError(errData.message);
-        }
+      const zData = await zRes.json().catch(() => ({}));
+
+      if (zRes.status === 200 && (zData.data?.status === 'success' || zData.data?.code === 'INS-0')) {
+        confirmOrderSuccess();
+        return;
       }
-    } catch (_) {
-      // Direct CORS API Fallback
-      try {
-        const apiKey = 'zk_live_84b0076d67b5f4cd50969d13906e1e562c4bec28c06e35aa';
-        const formattedPhone = normalizePhone(order.tel_pagamento);
 
-        const zRes = await fetch('https://zumbopay.com/api/public/v1/charges', {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer ' + apiKey,
-            'X-Merchant-Id': 'MCH_6000FA2DF2',
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Idempotency-Key': order.id
-          },
-          body: JSON.stringify({
-            wallet_id: MPESA_WALLET_ID,
-            amount: order.total,
-            msisdn: formattedPhone,
-            customer_name: order.nome,
-            source_id: order.id
-          })
-        });
-
-        const zData = await zRes.json();
-        if (zRes.status === 200 && zData.data?.status === 'success') {
-          confirmOrderSuccess();
-          return;
-        }
-
-        if (zRes.status === 202 || zData.data?.status === 'pending') {
-          zumboRef = zData.data?.reference;
-        } else if (zData.error?.message) {
-          showApiError(zData.error.message);
-        }
-      } catch (err) {
-        console.error('Direct ZumboPay error:', err);
+      if (zRes.status === 202 || zData.data?.status === 'pending' || zData.data?.code === 'INS-9') {
+        zumboRef = zData.data?.reference;
+      } else if (zData.error?.message || zData.message) {
+        showApiError(zData.error?.message || zData.message);
       }
+    } catch (err) {
+      console.error('Erro na chamada ZumboPay:', err);
     }
 
     if (pollingInterval) clearInterval(pollingInterval);
