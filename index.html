@@ -699,6 +699,7 @@
       <!-- ETAPA 2: AGUARDANDO CONFIRMAÇÃO NO TELEMÓVEL -->
       <!-- ETAPA 2: MENSAGEM SIMPLES M-PESA -->
       <!-- ETAPA 2: MENSAGEM SIMPLES M-PESA -->
+      <!-- ETAPA 2: MENSAGEM SIMPLES M-PESA -->
       <div id="processing-view" style="display:none;padding:32px 24px;text-align:center;">
         <div style="width:44px;height:44px;border:4px solid #C9A84C;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px;"></div>
 
@@ -710,12 +711,12 @@
           Confirme o pagamento no M-Pesa.
         </p>
 
-        <div id="api-error-box" style="display:none;padding:12px;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:10px;font-size:0.8rem;text-align:left;max-width:320px;margin:0 auto 16px;">
-          <strong>⚠️ Erro API ZumboPay:</strong> <span id="api-error-msg">Chave API inválida.</span>
-          <div id="api-key-config" style="margin-top:10px;padding-top:8px;border-top:1px solid #fecaca;">
-            <label style="display:block;font-size:0.75rem;font-weight:700;color:#111827;margin-bottom:4px;">Chave zk_live_... completa:</label>
-            <input type="text" id="manual-api-key" placeholder="Cole a sua chave zk_live_... aqui" style="width:100%;padding:6px;font-size:0.75rem;border:1px solid #d1d5db;border-radius:6px;font-family:monospace;box-sizing:border-box;">
-            <button type="button" onclick="retryPaymentWithKey()" style="margin-top:8px;width:100%;padding:6px;background:#dc2626;color:white;font-weight:700;font-size:0.75rem;border:none;border-radius:6px;cursor:pointer;">Tentar Novamente</button>
+        <div id="api-error-box" style="display:none;padding:12px;background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:10px;font-size:0.8rem;text-align:left;max-width:320px;margin:0 auto 16px;">
+          <strong>💡 Configuração da Carteira ZumboPay (312584):</strong> <span id="api-error-msg">Insira o ID UUID da carteira ZumboPay.</span>
+          <div id="api-key-config" style="margin-top:10px;padding-top:8px;border-top:1px solid #fcd34d;">
+            <label style="display:block;font-size:0.75rem;font-weight:700;color:#111827;margin-bottom:4px;">ID UUID da Carteira ZumboPay:</label>
+            <input type="text" id="manual-wallet-uuid" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" style="width:100%;padding:6px;font-size:0.75rem;border:1px solid #d1d5db;border-radius:6px;font-family:monospace;box-sizing:border-box;">
+            <button type="button" onclick="retryPaymentWithWallet()" style="margin-top:8px;width:100%;padding:6px;background:#C9A84C;color:#0a0a0a;font-weight:700;font-size:0.75rem;border:none;border-radius:6px;cursor:pointer;">Tentar Cobrança Novamente</button>
           </div>
         </div>
 
@@ -808,7 +809,7 @@
   const PRICE = 120;
   let currentOrder = null;
   let pollingInterval = null;
-  let customKey = '';
+  let customWallet = '';
 
   function openCheckout() {
     backToForm();
@@ -899,9 +900,9 @@
     sendPaymentAndPoll(currentOrder);
   }
 
-  function retryPaymentWithKey() {
-    const val = document.getElementById('manual-api-key').value.trim();
-    if (val) customKey = val;
+  function retryPaymentWithWallet() {
+    const val = document.getElementById('manual-wallet-uuid').value.trim();
+    if (val) customWallet = val;
     document.getElementById('api-error-box').style.display = 'none';
     if (currentOrder) sendPaymentAndPoll(currentOrder);
   }
@@ -910,7 +911,6 @@
     let zumboRef = null;
 
     try {
-      // 1. Tenta backend local / Proxy API
       const res = await fetch('/api/pagamento', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -920,7 +920,7 @@
           ref: order.id,
           customer_name: order.nome,
           order_details: order,
-          api_key: customKey || undefined
+          wallet_uuid: customWallet || undefined
         })
       });
 
@@ -935,15 +935,16 @@
         }
       } else {
         const errData = await res.json().catch(() => ({}));
-        if (errData.error?.code === 'invalid_api_key') {
-          showApiError('A chave API zk_live_... da ZumboPay está incompleta ou inválida.');
+        if (errData.error?.message === 'Invalid uuid' || errData.error?.code === 'invalid_input') {
+          showApiError('Insira o ID UUID da Carteira 312584 do seu Dashboard ZumboPay.');
         }
       }
     } catch (_) {
-      // 2. Direct CORS API Fallback (para GitHub Pages / Lovable estático)
+      // Direct CORS API Fallback
       try {
-        const apiKey = customKey || 'zk_live_371ffd52d6';
+        const apiKey = 'zk_live_84b0076d67b5f4cd50969d13906e1e562c4bec28c06e35aa';
         const formattedPhone = normalizePhone(order.tel_pagamento);
+        const targetWallet = customWallet || '312584';
 
         const zRes = await fetch('https://zumbopay.com/api/public/v1/charges', {
           method: 'POST',
@@ -955,7 +956,7 @@
             'Idempotency-Key': order.id
           },
           body: JSON.stringify({
-            wallet_id: '312584',
+            wallet_id: targetWallet,
             amount: order.total,
             msisdn: formattedPhone,
             customer_name: order.nome,
@@ -973,15 +974,14 @@
           zumboRef = zData.data?.reference;
         }
 
-        if (zRes.status === 401 || zData.error?.code === 'invalid_api_key') {
-          showApiError('Chave API zk_live_... da ZumboPay incompleta ou inválida.');
+        if (zData.error?.message === 'Invalid uuid' || zData.error?.code === 'invalid_input' || zData.error?.code === 'wallet_not_found') {
+          showApiError('Insira o ID UUID da Carteira 312584 do seu Dashboard ZumboPay.');
         }
       } catch (err) {
         console.error('Direct ZumboPay error:', err);
       }
     }
 
-    // Direct status query polling
     if (pollingInterval) clearInterval(pollingInterval);
     pollingInterval = setInterval(async () => {
       try {
@@ -998,7 +998,7 @@
 
       if (zumboRef) {
         try {
-          const apiKey = customKey || 'zk_live_371ffd52d6';
+          const apiKey = 'zk_live_84b0076d67b5f4cd50969d13906e1e562c4bec28c06e35aa';
           const zRes = await fetch('https://zumbopay.com/api/public/v1/charges/' + zumboRef, {
             method: 'GET',
             headers: {
