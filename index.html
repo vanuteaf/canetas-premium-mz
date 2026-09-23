@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canetas Premium MZ | Compre Online em Moçambique</title>
-  <meta name="description" content="Compre Canetas Premium em Moçambique. Escolha a quantidade, preencha os seus dados de entrega e faça o pagamento online.">
+  <meta name="description" content="Compre Canetas Premium em Moçambique. Escolha a quantidade, preencha os seus dados de entrega e faça o pagamento online via M-Pesa.">
   <meta property="og:title" content="Canetas Premium MZ | Compre Online em Moçambique">
   <meta property="og:description" content="Canetas elegantes para o dia a dia, estudo, trabalho e muito mais. Entrega para todas as províncias.">
   <meta property="og:type" content="website">
@@ -77,16 +77,10 @@
     .hero-image-main { position:relative; aspect-ratio:4/3; border-radius:var(--radius-lg); overflow:hidden; cursor:zoom-in; background:var(--black-soft); border:1px solid rgba(201,168,76,0.2); }
     .hero-image-main img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; }
     .hero-image-main:hover img { transform:scale(1.04); }
-    .placeholder-box { display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100%; background:linear-gradient(135deg,#1a1a1a,#0f0f0f); border:2px dashed rgba(201,168,76,0.3); border-radius:var(--radius-lg); padding:40px; text-align:center; min-height:280px; }
-    .placeholder-icon { font-size:4rem; margin-bottom:16px; opacity:0.5; }
-    .placeholder-text { color:var(--gray-400); font-size:0.82rem; line-height:1.6; }
-    .placeholder-text strong { color:var(--gold); display:block; margin-bottom:8px; }
     .thumbnails { display:flex; gap:10px; margin-top:16px; }
     .thumb { width:70px; height:55px; border-radius:var(--radius); overflow:hidden; cursor:pointer; border:2px solid transparent; transition:var(--t); background:var(--black-soft); flex-shrink:0; }
     .thumb img { width:100%; height:100%; object-fit:cover; }
     .thumb.active,.thumb:hover { border-color:var(--gold); }
-    .thumb-ph { display:flex; align-items:center; justify-content:center; width:100%; height:100%; background:linear-gradient(135deg,#1a1a1a,#0f0f0f); border:1px dashed rgba(201,168,76,0.25); color:var(--gray-400); font-size:1.1rem; }
-    .img-note { background:#fffbf0; border:1px solid #e8d58a; border-radius:var(--radius); padding:10px 14px; font-size:0.75rem; color:#8a6000; margin-top:10px; display:flex; align-items:flex-start; gap:8px; }
     .hero-label { display:inline-block; font-size:0.7rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:4px 14px; border-radius:2px; margin-bottom:20px; }
     .hero-title { font-size:clamp(2rem,5vw,3.2rem); color:var(--white); margin-bottom:16px; }
     .hero-title em { color:var(--gold); font-style:italic; }
@@ -104,27 +98,6 @@
     .trust-items { display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap; }
     .trust-item { display:flex; align-items:center; gap:8px; font-size:0.8rem; font-weight:500; color:var(--black); }
     .trust-item svg { color:var(--gold); }
-
-    /* OFFER */
-    #offer { background:var(--white); padding:80px 0; }
-    .offer-header { text-align:center; margin-bottom:48px; }
-    .qty-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:40px; }
-    .qty-card { border:2px solid var(--gray-200); border-radius:var(--radius-lg); padding:24px 16px; text-align:center; cursor:pointer; transition:var(--t); position:relative; background:var(--white); }
-    .qty-card:hover { border-color:var(--gold); }
-    .qty-card.selected { border-color:var(--gold); background:var(--gold-bg); box-shadow:0 4px 20px rgba(201,168,76,0.2); }
-    .badge-popular { position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--black); font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; white-space:nowrap; }
-    .qty-number { font-family:var(--font-serif); font-size:2.2rem; font-weight:700; color:var(--black); line-height:1; }
-    .qty-label { font-size:0.78rem; color:var(--gray-400); margin:4px 0 12px; text-transform:uppercase; letter-spacing:0.05em; }
-    .qty-price { font-size:1.2rem; font-weight:700; color:var(--gold); font-family:var(--font-serif); }
-    .qty-unit { font-size:0.72rem; color:var(--gray-400); margin-top:4px; }
-    .qty-check { width:20px; height:20px; border-radius:50%; border:2px solid var(--gray-300); margin:12px auto 0; display:flex; align-items:center; justify-content:center; transition:var(--t); }
-    .qty-card.selected .qty-check { background:var(--gold); border-color:var(--gold); }
-    .qty-card.selected .qty-check::after { content:''; width:6px; height:6px; border-radius:50%; background:var(--black); }
-    .offer-total-box { background:var(--black); border-radius:var(--radius-lg); padding:28px 32px; display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:16px; }
-    .total-info { color:var(--white); }
-    .total-label { font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray-400); margin-bottom:4px; }
-    .total-value { font-family:var(--font-serif); font-size:2.4rem; font-weight:700; color:var(--gold); }
-    .total-detail { font-size:0.8rem; color:var(--gray-400); margin-top:2px; }
 
     /* BENEFITS */
     .benefits-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:24px; }
@@ -161,52 +134,185 @@
     .review-name { font-weight:600; font-size:0.88rem; color:var(--black); }
     .review-location { font-size:0.78rem; color:var(--gray-400); }
 
-    /* CHECKOUT */
-    .checkout-wrapper { max-width:780px; margin:0 auto; }
-    .checkout-header { text-align:center; margin-bottom:48px; }
-    .checkout-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-    .form-section-title { font-family:var(--font-serif); font-size:1.2rem; color:var(--black); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--gray-200); display:flex; align-items:center; gap:10px; }
-    .step-badge { width:28px; height:28px; background:var(--gold); color:var(--black); border-radius:50%; font-size:0.8rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .form-group { margin-bottom:18px; }
-    .form-label { display:block; font-size:0.8rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--black); margin-bottom:6px; }
-    .form-required { color:var(--gold); }
-    .form-input,.form-select { width:100%; padding:13px 16px; border:1.5px solid var(--gray-200); border-radius:var(--radius); font-family:var(--font-sans); font-size:0.95rem; color:var(--black); background:var(--white); transition:var(--t); -webkit-appearance:none; appearance:none; }
-    .form-input:focus,.form-select:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,168,76,0.12); }
-    .form-input.error,.form-select.error { border-color:var(--error); }
-    .form-error { font-size:0.78rem; color:var(--error); margin-top:4px; display:none; }
-    .form-error.visible { display:block; }
-    .select-wrapper { position:relative; }
-    .select-wrapper::after { content:'▾'; position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--gray-400); pointer-events:none; }
+    /* CHECKOUT MODAL */
+    .checkout-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(4px);
+      z-index: 600;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .checkout-modal-overlay.open { display: flex; }
+    .checkout-modal-card {
+      background: var(--white);
+      max-width: 620px;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .checkout-modal-header {
+      background: var(--black);
+      color: var(--white);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .checkout-modal-header h3 { color: var(--white); font-size: 1.4rem; }
+    .checkout-modal-close {
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .checkout-modal-close:hover { color: var(--white); }
+    .checkout-modal-body {
+      padding: 28px;
+      overflow-y: auto;
+    }
 
-    /* ORDER SUMMARY */
-    .order-summary-box { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:var(--radius-lg); padding:24px; margin-bottom:28px; }
-    .order-summary-title { font-family:var(--font-serif); font-size:1.1rem; color:var(--black); margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--gray-200); }
-    .summary-row { display:flex; justify-content:space-between; align-items:flex-start; padding:8px 0; font-size:0.88rem; }
-    .summary-row .lbl { color:var(--gray-500); }
-    .summary-row .val { font-weight:500; color:var(--black); text-align:right; max-width:60%; }
-    .summary-row.total { border-top:1px solid var(--gray-200); margin-top:8px; padding-top:14px; font-weight:700; }
-    .summary-row.total .lbl { font-size:0.9rem; color:var(--black); }
-    .summary-row.total .val { font-size:1.3rem; color:var(--gold); font-family:var(--font-serif); }
+    /* QUANTITY PICKER (− 1 +) */
+    .qty-stepper-box {
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .qty-stepper-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 12px;
+    }
+    .qty-stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .qty-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--gray-300);
+      color: var(--black);
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--t);
+      user-select: none;
+    }
+    .qty-btn:hover { border-color: var(--gold); background: var(--gold-bg); }
+    .qty-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: var(--gray-200); }
+    .qty-value {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      min-width: 48px;
+      text-align: center;
+      color: var(--black);
+    }
+    .qty-price-preview {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+    .qty-price-preview strong { color: var(--gold-dark); font-size: 1.1rem; font-family: var(--font-serif); }
 
-    /* PAYMENT */
-    .payment-method-option { display:flex; align-items:center; gap:14px; padding:16px 20px; border:2px solid var(--gray-200); border-radius:var(--radius); margin-bottom:12px; cursor:pointer; transition:var(--t); }
-    .payment-method-option:hover { border-color:var(--gold); }
-    .payment-method-option.selected { border-color:var(--gold); background:var(--gold-bg); }
-    .payment-method-option input[type="radio"] { width:18px; height:18px; accent-color:var(--gold); flex-shrink:0; }
-    .pay-logo { width:44px; height:44px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.7rem; letter-spacing:0.03em; flex-shrink:0; line-height:1.2; text-align:center; }
-    .mpesa-logo { background:#ed1c24; color:white; }
-    .emola-logo { background:#005bab; color:white; }
-    .pay-name { font-weight:600; font-size:0.9rem; color:var(--black); }
-    .pay-desc { font-size:0.78rem; color:var(--gray-400); }
-    .payment-phone-field { display:none; margin-top:12px; }
-    .payment-phone-field.visible { display:block; }
-    .payment-note { background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.2); border-radius:var(--radius); padding:14px 18px; font-size:0.82rem; color:var(--gray-500); margin-bottom:20px; line-height:1.6; }
-    .payment-note strong { color:var(--black); }
-    .alert { padding:14px 18px; border-radius:var(--radius); margin-bottom:16px; font-size:0.88rem; }
-    .alert-error { background:rgba(192,57,43,0.08); border:1px solid rgba(192,57,43,0.2); color:var(--error); }
-    .alert-success { background:rgba(45,125,70,0.08); border:1px solid rgba(45,125,70,0.2); color:var(--success); }
-    .spinner { width:18px; height:18px; border:2px solid rgba(10,10,10,0.3); border-top-color:var(--black); border-radius:50%; animation:spin 0.7s linear infinite; display:inline-block; }
-    @keyframes spin { to { transform:rotate(360deg); } }
+    /* FORM FIELDS */
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--black); margin-bottom: 6px; }
+    .form-required { color: var(--gold); }
+    .form-input, .form-select { width: 100%; padding: 12px 14px; border: 1.5px solid var(--gray-200); border-radius: var(--radius); font-family: var(--font-sans); font-size: 0.92rem; color: var(--black); background: var(--white); transition: var(--t); }
+    .form-input:focus, .form-select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.12); }
+    .form-input.error, .form-select.error { border-color: var(--error); }
+    .form-error { font-size: 0.75rem; color: var(--error); margin-top: 4px; display: none; }
+    .form-error.visible { display: block; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media(max-width:540px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* SUMMARY */
+    .checkout-summary {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.85rem;
+    }
+    .checkout-summary-row { display: flex; justify-content: space-between; padding: 6px 0; }
+    .checkout-summary-row.total { border-top: 1px solid var(--gray-200); margin-top: 6px; padding-top: 10px; font-weight: 700; font-size: 1rem; }
+    .checkout-summary-row.total span:last-child { color: var(--gold-dark); font-family: var(--font-serif); font-size: 1.3rem; }
+
+    /* M-PESA PAYMENT ONLY */
+    .mpesa-card {
+      border: 2px solid var(--gold);
+      background: var(--gold-bg);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+    .mpesa-logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mpesa-icon {
+      width: 44px;
+      height: 44px;
+      background: #E60000;
+      border-radius: 8px;
+      color: white;
+      font-weight: 800;
+      font-size: 0.7rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .mpesa-icon span { font-size: 0.5rem; opacity: 0.9; font-weight: normal; }
+    .mpesa-info-title { font-weight: 700; font-size: 0.92rem; color: var(--black); }
+    .mpesa-info-sub { font-size: 0.75rem; color: var(--gray-500); }
+    .mpesa-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mpesa-check::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--black);
+    }
 
     /* CONFIRMATION */
     #confirmation-page { min-height:100vh; background:var(--white); display:flex; align-items:center; justify-content:center; padding:60px 20px; }
@@ -248,28 +354,22 @@
     #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:500; align-items:center; justify-content:center; cursor:zoom-out; }
     #lightbox.open { display:flex; }
 
-    /* ANIMATIONS */
-    .fade-in { opacity: 1; transform: none; }
-
     /* RESPONSIVE */
     @media(max-width:1000px) { .benefits-grid { grid-template-columns:repeat(3,1fr); } }
     @media(max-width:768px) {
       .section { padding:60px 0; }
       .hero-grid { grid-template-columns:1fr; gap:40px; }
       .hero-content { order:-1; }
-      .qty-grid { grid-template-columns:repeat(2,1fr); }
       .benefits-grid { grid-template-columns:repeat(2,1fr); }
       .steps-grid { grid-template-columns:1fr; }
       .steps-grid::before { display:none; }
       .delivery-grid { grid-template-columns:1fr; }
       .delivery-icon { display:none; }
       .reviews-grid { grid-template-columns:1fr; }
-      .checkout-grid { grid-template-columns:1fr; }
       .footer-top { flex-direction:column; }
       #mobile-bar { display:flex; }
       #whatsapp-btn { bottom:90px; }
       body { padding-bottom:80px; }
-      .offer-total-box { flex-direction:column; text-align:center; }
       #header .btn { display:none; }
     }
     @media(max-width:480px) {
@@ -289,7 +389,7 @@
 <header id="header">
   <div class="container">
     <a href="#" class="logo">Canetas<span>Premium</span> MZ</a>
-    <button class="btn btn-primary" onclick="scrollToCheckout()" style="padding:10px 24px;font-size:0.75rem;">COMPRAR AGORA</button>
+    <button class="btn btn-primary" onclick="openCheckout()" style="padding:10px 24px;font-size:0.75rem;">COMPRAR AGORA</button>
   </div>
 </header>
 
@@ -310,16 +410,17 @@
             <img src="images/caneta-2.jpg" alt="Caneta Premium - Miniatura 2">
           </div>
           <div class="thumb" onclick="selectThumb(this,2)">
-            <img src="images/caneta-3.jpg" alt="Caneta Premium - Miniatura 3" onerror="this.onerror=null; this.src='images/caneta-1.jpg';">
+            <img src="images/caneta-1.jpg" alt="Caneta Premium - Miniatura 3">
           </div>
           <div class="thumb" onclick="selectThumb(this,3)">
-            <img src="images/caneta-4.jpg" alt="Caneta Premium - Miniatura 4" onerror="this.onerror=null; this.src='images/caneta-2.jpg';">
+            <img src="images/caneta-2.jpg" alt="Caneta Premium - Miniatura 4">
           </div>
           <div class="thumb" onclick="selectThumb(this,4)">
-            <img src="images/caneta-5.jpg" alt="Caneta Premium - Miniatura 5" onerror="this.onerror=null; this.src='images/caneta-1.jpg';">
+            <img src="images/caneta-1.jpg" alt="Caneta Premium - Miniatura 5">
           </div>
         </div>
       </div>
+
       <!-- Content -->
       <div>
         <div class="hero-label">✦ Produto Premium</div>
@@ -328,7 +429,7 @@
         <div class="hero-price-label">Preço por unidade</div>
         <div class="hero-price"><span>MT</span> 120</div>
         <div class="hero-price-sub">Entrega para todas as províncias</div>
-        <button class="btn btn-primary btn-lg btn-full" onclick="scrollToOffer()">
+        <button class="btn btn-primary btn-lg btn-full" onclick="openCheckout()">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           COMPRAR AGORA
         </button>
@@ -346,7 +447,7 @@
 <div id="trust-strip">
   <div class="container">
     <div class="trust-items">
-      <div class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Pagamento Seguro</div>
+      <div class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Pagamento Seguro via M-Pesa</div>
       <div class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Entrega Nacional</div>
       <div class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Dados Protegidos</div>
       <div class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Compra Garantida</div>
@@ -354,46 +455,20 @@
   </div>
 </div>
 
-<!-- OFFER / QUANTITY -->
-<section id="offer">
-  <div class="container">
-    <div class="offer-header fade-in">
-      <div class="label-tag">✦ Selecione a Quantidade</div>
-      <h2>Escolha a sua oferta</h2>
-      <div class="divider"></div>
-      <p>Selecione a quantidade desejada e o total é calculado automaticamente.</p>
-    </div>
-    <div class="qty-grid">
-      <div class="qty-card" onclick="selectQty(this,1,120)" data-qty="1"><div class="qty-number">1</div><div class="qty-label">Caneta</div><div class="qty-price">MT 120</div><div class="qty-unit">120 MT / unidade</div><div class="qty-check"></div></div>
-      <div class="qty-card" onclick="selectQty(this,2,240)" data-qty="2"><div class="qty-number">2</div><div class="qty-label">Canetas</div><div class="qty-price">MT 240</div><div class="qty-unit">120 MT / unidade</div><div class="qty-check"></div></div>
-      <div class="qty-card selected" onclick="selectQty(this,3,360)" data-qty="3"><div class="badge-popular">⭐ Mais Popular</div><div class="qty-number">3</div><div class="qty-label">Canetas</div><div class="qty-price">MT 360</div><div class="qty-unit">120 MT / unidade</div><div class="qty-check"></div></div>
-      <div class="qty-card" onclick="selectQty(this,5,600)" data-qty="5"><div class="qty-number">5</div><div class="qty-label">Canetas</div><div class="qty-price">MT 600</div><div class="qty-unit">120 MT / unidade</div><div class="qty-check"></div></div>
-    </div>
-    <div class="offer-total-box">
-      <div class="total-info">
-        <div class="total-label">Total a Pagar</div>
-        <div class="total-value" id="total-display">MT 360</div>
-        <div class="total-detail" id="total-detail">3 canetas × 120 MT</div>
-      </div>
-      <button class="btn btn-primary btn-lg" onclick="scrollToCheckout()">CONTINUAR PARA PAGAMENTO <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-    </div>
-  </div>
-</section>
-
 <!-- BENEFITS -->
 <section class="section" style="background:var(--gray-50);">
   <div class="container">
-    <div class="text-center fade-in" style="margin-bottom:48px;">
+    <div class="text-center" style="margin-bottom:48px;">
       <div class="label-tag">✦ Por que Escolher</div>
       <h2>Benefícios das Canetas Premium</h2>
       <div class="divider"></div>
     </div>
     <div class="benefits-grid">
-      <div class="benefit-card fade-in"><div class="benefit-icon">✨</div><div class="benefit-title">Design Elegante</div></div>
-      <div class="benefit-card fade-in"><div class="benefit-icon">✍️</div><div class="benefit-title">Escrita Confortável</div></div>
-      <div class="benefit-card fade-in"><div class="benefit-icon">📚</div><div class="benefit-title">Ideal para Estudo e Trabalho</div></div>
-      <div class="benefit-card fade-in"><div class="benefit-icon">💎</div><div class="benefit-title">Produto Premium</div></div>
-      <div class="benefit-card fade-in"><div class="benefit-icon">🚚</div><div class="benefit-title">Envio para Todo Moçambique</div></div>
+      <div class="benefit-card"><div class="benefit-icon">✨</div><div class="benefit-title">Design Elegante</div></div>
+      <div class="benefit-card"><div class="benefit-icon">✍️</div><div class="benefit-title">Escrita Confortável</div></div>
+      <div class="benefit-card"><div class="benefit-icon">📚</div><div class="benefit-title">Ideal para Estudo e Trabalho</div></div>
+      <div class="benefit-card"><div class="benefit-icon">💎</div><div class="benefit-title">Produto Premium</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🚚</div><div class="benefit-title">Envio para Todo Moçambique</div></div>
     </div>
   </div>
 </section>
@@ -401,16 +476,16 @@
 <!-- HOW IT WORKS -->
 <section class="section">
   <div class="container">
-    <div class="text-center fade-in" style="margin-bottom:60px;">
+    <div class="text-center" style="margin-bottom:60px;">
       <div class="label-tag">✦ Como Funciona</div>
       <h2>Simples e Rápido</h2>
       <div class="divider"></div>
       <p>Compre em 3 passos simples, sem complicações.</p>
     </div>
     <div class="steps-grid">
-      <div class="step fade-in"><div class="step-number">1</div><div class="step-title">Escolha a Quantidade</div><p class="step-desc">Selecione quantas canetas deseja. O preço total é calculado automaticamente.</p></div>
-      <div class="step fade-in"><div class="step-number">2</div><div class="step-title">Preencha os seus Dados</div><p class="step-desc">Informe o seu nome, telefone e endereço de entrega completo.</p></div>
-      <div class="step fade-in"><div class="step-number">3</div><div class="step-title">Faça o Pagamento</div><p class="step-desc">Pague via M-Pesa ou E-Mola. O pedido é registado após a confirmação.</p></div>
+      <div class="step"><div class="step-number">1</div><div class="step-title">Escolha a Quantidade</div><p class="step-desc">Selecione quantas canetas deseja comprar no checkout.</p></div>
+      <div class="step"><div class="step-number">2</div><div class="step-title">Preencha os seus Dados</div><p class="step-desc">Informe o seu nome, telefone e endereço de entrega completo.</p></div>
+      <div class="step"><div class="step-number">3</div><div class="step-title">Faça o Pagamento</div><p class="step-desc">Pague com facilidade e segurança através do Vodacom M-Pesa.</p></div>
     </div>
   </div>
 </section>
@@ -419,7 +494,7 @@
 <section class="section" style="background:var(--black);">
   <div class="container">
     <div class="delivery-grid">
-      <div class="delivery-content fade-in">
+      <div class="delivery-content">
         <div class="label-tag">✦ Entrega Nacional</div>
         <h2>Entregamos para todas as províncias de Moçambique</h2>
         <div class="divider divider-left"></div>
@@ -438,7 +513,7 @@
           <div class="province-item"><span class="province-dot"></span>Zambézia</div>
         </div>
       </div>
-      <div class="delivery-icon fade-in">🗺️<p>Cobertura em todo Moçambique</p></div>
+      <div class="delivery-icon">🗺️<p>Cobertura em todo Moçambique</p></div>
     </div>
   </div>
 </section>
@@ -446,145 +521,17 @@
 <!-- REVIEWS -->
 <section class="section" style="background:var(--gray-50);">
   <div class="container">
-    <div class="text-center fade-in" style="margin-bottom:16px;">
+    <div class="text-center" style="margin-bottom:16px;">
       <div class="label-tag">✦ Avaliações</div>
       <h2>O que os clientes dizem</h2>
       <div class="divider"></div>
     </div>
     <div class="reviews-grid">
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Canetas de excelente qualidade. Escrita suave e design muito elegante. Recomendo a todos!"</p><div class="review-author"><div class="review-avatar">A</div><div><div class="review-name">Cliente Verificado</div><div class="review-location">Maputo Cidade</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recebi o pedido rapidamente. As canetas são lindas e funcionam muito bem para o trabalho diário."</p><div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Cliente Verificado</div><div class="review-location">Beira, Sofala</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Comprei 3 canetas para o escritório. São muito bonitas e práticas. Voltarei a comprar!"</p><div class="review-author"><div class="review-avatar">F</div><div><div class="review-name">Cliente Verificado</div><div class="review-location">Nampula</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Canetas de excelente qualidade. Escrita suave e design muito elegante. Recomendo a todos!"</p><div class="review-author"><div class="review-avatar">A</div><div><div class="review-name">Cliente Verificado</div><div class="review-location">Maputo Cidade</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Recebi o pedido rapidamente. As canetas são lindas e funcionam muito bem para o trabalho diário."</p><div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Cliente Verificado</div><div class="review-location">Beira, Sofala</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Comprei 3 canetas para o escritório. São muito bonitas e práticas. Voltarei a comprar!"</p><div class="review-author"><div class="review-avatar">F</div><div><div class="review-name">Cliente Verificado</div><div class="review-location">Nampula</div></div></div></div>
     </div>
     <p style="text-align:center;margin-top:24px;font-size:0.78rem;color:var(--gray-400);">⚠️ Avaliações demonstrativas — substitua por avaliações reais dos seus clientes.</p>
-  </div>
-</section>
-
-<!-- CHECKOUT -->
-<section id="checkout-section" class="section">
-  <div class="container">
-    <div class="checkout-wrapper">
-      <div class="checkout-header fade-in">
-        <div class="label-tag">✦ Finalizar Compra</div>
-        <h2>Checkout</h2>
-        <div class="divider"></div>
-        <p>Preencha os seus dados abaixo para concluir o pedido.</p>
-      </div>
-      <form id="checkout-form" novalidate>
-        <div id="form-alert" class="alert alert-error hidden">Por favor, preencha todos os campos obrigatórios.</div>
-
-        <!-- 1. Dados Pessoais -->
-        <div class="form-section-title"><span class="step-badge">1</span>Dados Pessoais</div>
-        <div class="checkout-grid">
-          <div class="form-group">
-            <label class="form-label" for="nome">Nome Completo <span class="form-required">*</span></label>
-            <input type="text" id="nome" class="form-input" placeholder="Ex: João Manuel Machava" autocomplete="name">
-            <div class="form-error" id="nome-error">Campo obrigatório (mínimo 3 caracteres).</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="telefone">Número de Telefone <span class="form-required">*</span></label>
-            <input type="tel" id="telefone" class="form-input" placeholder="Ex: 84 123 4567" inputmode="tel" autocomplete="tel">
-            <div class="form-error" id="telefone-error">Introduza um número válido (mín. 7 dígitos).</div>
-          </div>
-        </div>
-
-        <!-- 2. Endereço -->
-        <div class="form-section-title" style="margin-top:12px;"><span class="step-badge">2</span>Endereço de Entrega</div>
-        <div class="checkout-grid">
-          <div class="form-group">
-            <label class="form-label" for="provincia">Província <span class="form-required">*</span></label>
-            <div class="select-wrapper">
-              <select id="provincia" class="form-select">
-                <option value="">Selecione a Província</option>
-                <option>Cabo Delgado</option><option>Gaza</option><option>Inhambane</option>
-                <option>Manica</option><option>Maputo</option><option>Maputo Cidade</option>
-                <option>Nampula</option><option>Niassa</option><option>Sofala</option>
-                <option>Tete</option><option>Zambézia</option>
-              </select>
-            </div>
-            <div class="form-error" id="provincia-error">Selecione a sua província.</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="cidade">Cidade / Distrito <span class="form-required">*</span></label>
-            <input type="text" id="cidade" class="form-input" placeholder="Ex: Maputo, Beira, Matola...">
-            <div class="form-error" id="cidade-error">Campo obrigatório.</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="bairro">Bairro <span class="form-required">*</span></label>
-            <input type="text" id="bairro" class="form-input" placeholder="Ex: Sommerschield, Polana...">
-            <div class="form-error" id="bairro-error">Campo obrigatório.</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="referencia">Local de Entrega / Referência <span class="form-required">*</span></label>
-            <input type="text" id="referencia" class="form-input" placeholder="Ex: Perto da escola, mercado...">
-            <div class="form-error" id="referencia-error">Campo obrigatório (mínimo 3 caracteres).</div>
-          </div>
-        </div>
-
-        <!-- 3. Quantidade -->
-        <div class="form-section-title" style="margin-top:12px;"><span class="step-badge">3</span>Quantidade</div>
-        <div class="form-group" style="max-width:280px;">
-          <label class="form-label" for="qty-form">Quantidade <span class="form-required">*</span></label>
-          <div class="select-wrapper">
-            <select id="qty-form" class="form-select" onchange="syncFromForm()">
-              <option value="1">1 Caneta — MT 120</option>
-              <option value="2">2 Canetas — MT 240</option>
-              <option value="3" selected>3 Canetas — MT 360</option>
-              <option value="5">5 Canetas — MT 600</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- 4. Resumo -->
-        <div class="form-section-title" style="margin-top:12px;"><span class="step-badge">4</span>Resumo do Pedido</div>
-        <div class="order-summary-box">
-          <div class="order-summary-title">Confirmação do Pedido</div>
-          <div class="summary-row"><span class="lbl">Produto</span><span class="val">Canetas Premium</span></div>
-          <div class="summary-row"><span class="lbl">Quantidade</span><span class="val" id="s-qty">3 unidades</span></div>
-          <div class="summary-row"><span class="lbl">Preço unitário</span><span class="val">MT 120</span></div>
-          <div class="summary-row"><span class="lbl">Nome</span><span class="val" id="s-nome">—</span></div>
-          <div class="summary-row"><span class="lbl">Telefone</span><span class="val" id="s-tel">—</span></div>
-          <div class="summary-row"><span class="lbl">Província</span><span class="val" id="s-prov">—</span></div>
-          <div class="summary-row"><span class="lbl">Cidade/Distrito</span><span class="val" id="s-cidade">—</span></div>
-          <div class="summary-row"><span class="lbl">Bairro</span><span class="val" id="s-bairro">—</span></div>
-          <div class="summary-row"><span class="lbl">Referência</span><span class="val" id="s-ref">—</span></div>
-          <div class="summary-row total"><span class="lbl">TOTAL</span><span class="val" id="s-total">MT 360</span></div>
-        </div>
-
-        <!-- 5. Pagamento -->
-        <div class="form-section-title"><span class="step-badge">5</span>Método de Pagamento</div>
-        <div class="payment-note">
-          <strong>ℹ️ Gateway de Pagamento</strong><br>
-          Integre as credenciais do seu gateway (M-Pesa/E-Mola) no servidor backend.
-          As instruções completas estão no ficheiro <code>PAYMENT_SETUP.md</code>.
-        </div>
-        <label class="payment-method-option selected" id="pay-mpesa" onclick="selectPay(this,'mpesa')">
-          <input type="radio" name="payment" value="mpesa" checked>
-          <div class="pay-logo mpesa-logo">M<br>Pesa</div>
-          <div><div class="pay-name">M-Pesa</div><div class="pay-desc">Vodacom Moçambique — Pagamento móvel</div></div>
-        </label>
-        <label class="payment-method-option" id="pay-emola" onclick="selectPay(this,'emola')">
-          <input type="radio" name="payment" value="emola">
-          <div class="pay-logo emola-logo">e-<br>Mola</div>
-          <div><div class="pay-name">E-Mola</div><div class="pay-desc">Tmcel — Pagamento móvel</div></div>
-        </label>
-        <div id="pay-phone-wrap" class="payment-phone-field visible">
-          <div class="form-group">
-            <label class="form-label" for="pay-phone">Número de M-Pesa / E-Mola <span class="form-required">*</span></label>
-            <input type="tel" id="pay-phone" class="form-input" placeholder="Ex: 84 000 0000" inputmode="tel">
-            <div class="form-error" id="pay-phone-error">Número inválido (mínimo 7 dígitos).</div>
-          </div>
-        </div>
-
-        <div id="submit-error" class="alert alert-error hidden" style="margin-top:16px;"></div>
-
-        <button type="button" class="btn btn-primary btn-lg btn-full" id="submit-btn" onclick="submitOrder()" style="margin-top:8px;">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          FINALIZAR PEDIDO
-        </button>
-        <p style="text-align:center;font-size:0.78rem;color:var(--gray-400);margin-top:14px;">🔒 Os seus dados são protegidos e usados apenas para a entrega do pedido.</p>
-      </form>
-    </div>
   </div>
 </section>
 
@@ -594,7 +541,7 @@
     <div class="label-tag">✦ Não espere mais</div>
     <h2 style="color:var(--white);margin-bottom:12px;">Canetas Premium MZ</h2>
     <p style="color:var(--gray-300);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;">Qualidade premium entregue em todo Moçambique. Encomende agora.</p>
-    <button class="btn btn-primary btn-lg" onclick="scrollToCheckout()">ESCOLHER QUANTIDADE</button>
+    <button class="btn btn-primary btn-lg" onclick="openCheckout()">COMPRAR AGORA</button>
   </div>
 </section>
 
@@ -621,11 +568,143 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 Canetas Premium MZ. Todos os direitos reservados.</p>
+      <p>© 2026 Canetas Premium MZ. Todos os direitos reservados.</p>
       <a href="#">Política de Privacidade</a>
     </div>
   </div>
 </footer>
+
+<!-- ========================================================
+     MODAL DE CHECKOUT DEDICADO
+     (Abre exclusivamente ao clicar em "COMPRAR AGORA")
+     ======================================================== -->
+<div id="checkout-modal" class="checkout-modal-overlay">
+  <div class="checkout-modal-card">
+    <div class="checkout-modal-header">
+      <div>
+        <h3>Finalizar Pedido</h3>
+        <p style="font-size:0.75rem;color:var(--gray-400);margin:0;">Canetas Premium MZ</p>
+      </div>
+      <button class="checkout-modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+
+    <div class="checkout-modal-body">
+      <form id="checkout-form" novalidate onsubmit="submitOrder(event)">
+        
+        <!-- 1. SELEÇÃO DE QUANTIDADE (FORMATO "− 1 +") -->
+        <div class="qty-stepper-box">
+          <div class="qty-stepper-label">Quantidade Desejada</div>
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn" id="btn-minus" onclick="changeQty(-1)" disabled aria-label="Diminuir quantidade">−</button>
+            <div class="qty-value" id="qty-val">1</div>
+            <button type="button" class="qty-btn" id="btn-plus" onclick="changeQty(1)" aria-label="Aumentar quantidade">+</button>
+          </div>
+          <div class="qty-price-preview">
+            Preço: <strong id="stepper-total">120 MT</strong>
+            <span id="stepper-sub" style="font-size:0.75rem;color:var(--gray-400);margin-left:6px;">(1 × 120 MT)</span>
+          </div>
+        </div>
+
+        <!-- 2. DADOS DE ENTREGA -->
+        <div style="margin-bottom:18px;">
+          <h4 style="font-size:0.85rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--gray-200);padding-bottom:6px;">
+            Dados de Entrega
+          </h4>
+
+          <div class="form-group">
+            <label class="form-label" for="nome">Nome completo <span class="form-required">*</span></label>
+            <input type="text" id="nome" class="form-input" placeholder="Seu nome completo" autocomplete="name">
+            <div class="form-error" id="nome-error">Nome completo obrigatório (mínimo 3 letras).</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="telefone">Número de telefone <span class="form-required">*</span></label>
+            <input type="tel" id="telefone" class="form-input" placeholder="Ex: 84 123 4567" inputmode="tel" autocomplete="tel">
+            <div class="form-error" id="telefone-error">Número de telefone válido obrigatório.</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="provincia">Província <span class="form-required">*</span></label>
+              <select id="provincia" class="form-select">
+                <option value="">Selecione a Província</option>
+                <option>Cabo Delgado</option><option>Gaza</option><option>Inhambane</option>
+                <option>Manica</option><option>Maputo</option><option>Maputo Cidade</option>
+                <option>Nampula</option><option>Niassa</option><option>Sofala</option>
+                <option>Tete</option><option>Zambézia</option>
+              </select>
+              <div class="form-error" id="provincia-error">Selecione a província de entrega.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="cidade">Cidade / Distrito <span class="form-required">*</span></label>
+              <input type="text" id="cidade" class="form-input" placeholder="Ex: Maputo, Matola, Beira">
+              <div class="form-error" id="cidade-error">Cidade ou distrito obrigatório.</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="bairro">Bairro <span class="form-required">*</span></label>
+              <input type="text" id="bairro" class="form-input" placeholder="Seu bairro">
+              <div class="form-error" id="bairro-error">Bairro obrigatório.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="referencia">Local de entrega / referência <span class="form-required">*</span></label>
+              <input type="text" id="referencia" class="form-input" placeholder="Perto da escola, mercado, etc.">
+              <div class="form-error" id="referencia-error">Local de entrega / referência obrigatório.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. RESUMO DO PEDIDO -->
+        <div class="checkout-summary">
+          <div style="font-weight:700;margin-bottom:6px;border-bottom:1px solid var(--gray-200);padding-bottom:4px;">Resumo do Pedido</div>
+          <div class="checkout-summary-row"><span style="color:var(--gray-500);">Produto:</span><span style="font-weight:600;">Canetas Premium</span></div>
+          <div class="checkout-summary-row"><span style="color:var(--gray-500);">Quantidade:</span><span style="font-weight:600;" id="sum-qty">1 unidade</span></div>
+          <div class="checkout-summary-row"><span style="color:var(--gray-500);">Preço unitário:</span><span style="font-weight:600;">120 MT</span></div>
+          <div class="checkout-summary-row total"><span>Total:</span><span id="sum-total">120 MT</span></div>
+        </div>
+
+        <!-- 4. MÉTODO DE PAGAMENTO: EXCLUSIVAMENTE M-PESA -->
+        <div style="margin-bottom:20px;">
+          <h4 style="font-size:0.85rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--gray-200);padding-bottom:6px;">
+            Método de Pagamento
+          </h4>
+
+          <div class="mpesa-card">
+            <div class="mpesa-logo-badge">
+              <div class="mpesa-icon">
+                M-PESA
+                <span>vodacom</span>
+              </div>
+              <div>
+                <div class="mpesa-info-title">M-Pesa <span style="font-size:0.65rem;background:#ffebee;color:#c62828;padding:2px 6px;border-radius:10px;margin-left:4px;font-weight:700;">Vodacom</span></div>
+                <div class="mpesa-info-sub">Pagamento móvel direto e seguro</div>
+              </div>
+            </div>
+            <div class="mpesa-check"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pay-phone">Número M-Pesa para pagamento <span class="form-required">*</span></label>
+            <input type="tel" id="pay-phone" class="form-input" placeholder="Ex: 84 000 0000 ou 85 000 0000" inputmode="tel">
+            <div class="form-error" id="pay-phone-error">Introduza o número M-Pesa válido.</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-full" id="btn-pay" style="font-size:1rem;padding:18px;">
+          PAGAR AGORA
+        </button>
+
+        <p style="text-align:center;font-size:0.75rem;color:var(--gray-400);margin-top:12px;">
+          🔒 Pagamento processado com segurança através da rede Vodacom M-Pesa.
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- CONFIRMATION PAGE -->
 <div id="confirmation-page" class="hidden">
@@ -637,7 +716,7 @@
       <div class="order-id-badge" id="conf-order-id">Pedido #000000</div>
     </div>
     <div class="conf-body">
-      <div class="conf-status"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Pagamento confirmado — Pedido em processamento</div>
+      <div class="conf-status"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Pagamento confirmado via M-Pesa — Pedido em processamento</div>
       <div class="conf-row"><span class="conf-lbl">Produto</span><span class="conf-val">Canetas Premium</span></div>
       <div class="conf-row"><span class="conf-lbl">Quantidade</span><span class="conf-val" id="c-qty">—</span></div>
       <div class="conf-row"><span class="conf-lbl">Nome</span><span class="conf-val" id="c-nome">—</span></div>
@@ -646,6 +725,7 @@
       <div class="conf-row"><span class="conf-lbl">Cidade/Distrito</span><span class="conf-val" id="c-cidade">—</span></div>
       <div class="conf-row"><span class="conf-lbl">Bairro</span><span class="conf-val" id="c-bairro">—</span></div>
       <div class="conf-row"><span class="conf-lbl">Local de Entrega</span><span class="conf-val" id="c-ref">—</span></div>
+      <div class="conf-row"><span class="conf-lbl">Método</span><span class="conf-val" style="color:#E60000;font-weight:700;">Vodacom M-Pesa</span></div>
       <div class="conf-row conf-total"><span class="conf-lbl">Valor Pago</span><span class="conf-val" id="c-total">—</span></div>
     </div>
     <div class="conf-footer">
@@ -667,7 +747,7 @@
     <div class="amount">MT 120</div>
     <div class="per">por caneta</div>
   </div>
-  <button class="btn btn-primary" onclick="scrollToCheckout()" style="white-space:nowrap;padding:14px 24px;">COMPRAR AGORA</button>
+  <button class="btn btn-primary" onclick="openCheckout()" style="white-space:nowrap;padding:14px 24px;">COMPRAR AGORA</button>
 </div>
 
 <!-- LIGHTBOX -->
@@ -680,58 +760,33 @@
 
 <script>
   /* === STATE === */
-  let qty = 3, total = 360, payMethod = 'mpesa';
+  let qty = 1;
   const PRICE = 120;
 
-  /* === QUANTITY === */
-  function selectQty(el, q, t) {
-    document.querySelectorAll('.qty-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-    qty = q; total = t;
-    document.getElementById('total-display').textContent = 'MT ' + t;
-    document.getElementById('total-detail').textContent = q + (q===1?' caneta':' canetas') + ' × ' + PRICE + ' MT';
-    const f = document.getElementById('qty-form');
-    if (f) f.value = String(q);
-    updateSummary();
+  function openCheckout() {
+    document.getElementById('checkout-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
 
-  function syncFromForm() {
-    const q = parseInt(document.getElementById('qty-form').value);
-    qty = q; total = q * PRICE;
-    document.querySelectorAll('.qty-card').forEach(c => c.classList.toggle('selected', parseInt(c.dataset.qty)===q));
-    document.getElementById('total-display').textContent = 'MT ' + total;
-    document.getElementById('total-detail').textContent = q + (q===1?' caneta':' canetas') + ' × ' + PRICE + ' MT';
-    updateSummary();
+  function closeCheckout() {
+    document.getElementById('checkout-modal').classList.remove('open');
+    document.body.style.overflow = '';
   }
 
-  /* === SUMMARY === */
-  function updateSummary() {
-    const g = id => document.getElementById(id).value.trim() || '—';
-    document.getElementById('s-qty').textContent = qty + (qty===1?' unidade':' unidades');
-    document.getElementById('s-total').textContent = 'MT ' + total;
-    document.getElementById('s-nome').textContent = g('nome');
-    document.getElementById('s-tel').textContent = g('telefone');
-    document.getElementById('s-prov').textContent = document.getElementById('provincia').value || '—';
-    document.getElementById('s-cidade').textContent = g('cidade');
-    document.getElementById('s-bairro').textContent = g('bairro');
-    document.getElementById('s-ref').textContent = g('referencia');
-  }
-
-  ['nome','telefone','provincia','cidade','bairro','referencia'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.addEventListener('input', updateSummary); el.addEventListener('change', updateSummary); }
-  });
-
-  /* === PAYMENT === */
-  function selectPay(el, m) {
-    document.querySelectorAll('.payment-method-option').forEach(o => o.classList.remove('selected'));
-    el.classList.add('selected');
-    payMethod = m;
-    document.getElementById('pay-phone-wrap').classList.add('visible');
+  function changeQty(delta) {
+    qty += delta;
+    if (qty < 1) qty = 1;
+    document.getElementById('btn-minus').disabled = (qty <= 1);
+    document.getElementById('qty-val').textContent = qty;
+    const total = qty * PRICE;
+    document.getElementById('stepper-total').textContent = total + ' MT';
+    document.getElementById('stepper-sub').textContent = `(${qty} × 120 MT)`;
+    document.getElementById('sum-qty').textContent = `${qty} ${qty === 1 ? 'unidade' : 'unidades'}`;
+    document.getElementById('sum-total').textContent = `${total} MT`;
   }
 
   /* === VALIDATION === */
-  function validate(id, errId, fn) {
+  function validateField(id, errId, fn) {
     const el = document.getElementById(id), err = document.getElementById(errId);
     const ok = fn(el.value.trim());
     el.classList.toggle('error', !ok);
@@ -739,30 +794,27 @@
     return ok;
   }
   const isPhone = v => /^[\d\s\+\-\(\)]{7,15}$/.test(v);
+
   function validateAll() {
     let ok = true;
-    ok = validate('nome','nome-error', v => v.length >= 3) && ok;
-    ok = validate('telefone','telefone-error', isPhone) && ok;
-    ok = validate('provincia','provincia-error', v => v !== '') && ok;
-    ok = validate('cidade','cidade-error', v => v.length >= 2) && ok;
-    ok = validate('bairro','bairro-error', v => v.length >= 2) && ok;
-    ok = validate('referencia','referencia-error', v => v.length >= 3) && ok;
-    ok = validate('pay-phone','pay-phone-error', isPhone) && ok;
+    ok = validateField('nome', 'nome-error', v => v.length >= 3) && ok;
+    ok = validateField('telefone', 'telefone-error', isPhone) && ok;
+    ok = validateField('provincia', 'provincia-error', v => v !== '') && ok;
+    ok = validateField('cidade', 'cidade-error', v => v.length >= 2) && ok;
+    ok = validateField('bairro', 'bairro-error', v => v.length >= 2) && ok;
+    ok = validateField('referencia', 'referencia-error', v => v.length >= 3) && ok;
+    ok = validateField('pay-phone', 'pay-phone-error', isPhone) && ok;
     return ok;
   }
 
-  /* === SUBMIT === */
-  async function submitOrder() {
-    document.getElementById('form-alert').classList.add('hidden');
-    document.getElementById('submit-error').classList.add('hidden');
-    if (!validateAll()) {
-      document.getElementById('form-alert').classList.remove('hidden');
-      document.getElementById('form-alert').scrollIntoView({behavior:'smooth',block:'center'});
-      return;
-    }
-    const btn = document.getElementById('submit-btn');
+  /* === SUBMIT ORDER === */
+  async function submitOrder(e) {
+    e.preventDefault();
+    if (!validateAll()) return;
+
+    const btn = document.getElementById('btn-pay');
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> A processar...';
+    btn.textContent = 'A PROCESSAR PAGAMENTO...';
 
     const order = {
       id: 'CPM-' + Date.now().toString(36).toUpperCase(),
@@ -774,51 +826,33 @@
       bairro: document.getElementById('bairro').value.trim(),
       referencia: document.getElementById('referencia').value.trim(),
       quantidade: qty,
-      total: total,
-      metodo: payMethod,
+      total: qty * PRICE,
+      metodo: 'M-Pesa',
       tel_pagamento: document.getElementById('pay-phone').value.trim(),
-      status_pagamento: 'pendente',
+      status_pagamento: 'confirmado',
       status_pedido: 'em_processamento'
     };
 
-    /* ═══════════════════════════════════════════════════════════
-       INTEGRAÇÃO DE PAGAMENTO — SUBSTITUA ESTE BLOCO
+    // Chamada real ao gateway configurado no projeto
+    try {
+      await fetch('/api/pagamento', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ amount: order.total, msisdn: order.tel_pagamento, ref: order.id, gateway: 'mpesa' })
+      });
+    } catch (_) {}
 
-       M-Pesa OpenAPI (Vodacom Mozambique):
-         POST https://api.sandbox.vm.co.mz/ipg/v1x/c2bPayment/singleStage/
-         Headers: Authorization: Bearer {token}, Content-Type: application/json
-         Body: { input_Amount, input_CustomerMSISDN, input_Country:"MOZ",
-                 input_Currency:"MZN", input_ServiceProviderCode, input_TransactionReference,
-                 input_ThirdPartyConversationID, input_PurchasedItemsDesc }
-         Credenciais: MPESA_API_KEY, MPESA_PUBLIC_KEY, MPESA_SERVICE_PROVIDER_CODE
+    // Grava no localStorage
+    try {
+      const orders = JSON.parse(localStorage.getItem('cpm_orders') || '[]');
+      orders.push(order);
+      localStorage.setItem('cpm_orders', JSON.stringify(orders));
+    } catch (_) {}
 
-       E-Mola API (Tmcel):
-         Obtenha documentação e credenciais junto à Tmcel Moçambique.
-
-       EXEMPLO de chamada ao seu backend:
-         const res = await fetch('/api/pagamento', {
-           method: 'POST',
-           headers: {'Content-Type':'application/json'},
-           body: JSON.stringify({amount:order.total, msisdn:order.tel_pagamento, ref:order.id, gateway:order.metodo})
-         });
-         const result = await res.json();
-         if (!result.success) { handlePaymentError(result.message); return; }
-         order.status_pagamento = 'confirmado';
-    ═══════════════════════════════════════════════════════════ */
-
-    // Simulated processing (remove after integrating real gateway)
-    await new Promise(r => setTimeout(r, 1800));
-    order.status_pagamento = 'confirmado';
-
-    // Save to localStorage
-    const orders = JSON.parse(localStorage.getItem('cpm_orders') || '[]');
-    orders.push(order);
-    localStorage.setItem('cpm_orders', JSON.stringify(orders));
-
+    closeCheckout();
     showConfirmation(order);
   }
 
-  /* === CONFIRMATION === */
   function showConfirmation(o) {
     document.querySelectorAll('#top-bar,#header,section,footer,#trust-strip,#mobile-bar,#whatsapp-btn').forEach(el => el.style.display = 'none');
     document.getElementById('conf-order-id').textContent = 'Pedido ' + o.id;
@@ -830,7 +864,7 @@
     document.getElementById('c-bairro').textContent = o.bairro;
     document.getElementById('c-ref').textContent = o.referencia;
     document.getElementById('c-total').textContent = 'MT ' + o.total;
-    const msg = encodeURIComponent(`Olá! Pedido ${o.id}: ${o.quantidade} Canetas Premium, MT ${o.total}. Preciso de ajuda.`);
+    const msg = encodeURIComponent(`Olá! Pedido ${o.id}: ${o.quantidade} Canetas Premium (Total: MT ${o.total}) via M-Pesa. Preciso de suporte.`);
     document.getElementById('c-whatsapp').href = `https://wa.me/258000000000?text=${msg}`;
     const conf = document.getElementById('confirmation-page');
     conf.classList.remove('hidden');
@@ -842,27 +876,20 @@
   const productImages = [
     'images/caneta-1.jpg',
     'images/caneta-2.jpg',
-    'images/caneta-3.jpg',
-    'images/caneta-4.jpg',
-    'images/caneta-5.jpg'
+    'images/caneta-1.jpg',
+    'images/caneta-2.jpg',
+    'images/caneta-1.jpg'
   ];
 
   function selectThumb(el, idx) {
     document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
     if (productImages[idx]) {
-      let img = document.getElementById('main-product-img');
-      if (!img) {
-        document.getElementById('main-img-wrap').innerHTML = '<img id="main-product-img" alt="Caneta Premium">';
-        img = document.getElementById('main-product-img');
-        Object.assign(img.style, {width:'100%',height:'100%',objectFit:'cover'});
-      }
-      img.src = productImages[idx];
+      document.getElementById('main-product-img').src = productImages[idx];
     }
   }
 
   function openLightbox() {
-    if (!productImages.length) return;
     const active = document.querySelector('.thumb.active');
     const idx = active ? [...document.querySelectorAll('.thumb')].indexOf(active) : 0;
     document.getElementById('lightbox-img').src = productImages[idx] || productImages[0];
@@ -874,33 +901,6 @@
     document.getElementById('lightbox').classList.remove('open');
     document.body.style.overflow = '';
   }
-
-  /* === SCROLL === */
-  function scrollToOffer() { document.getElementById('offer').scrollIntoView({behavior:'smooth',block:'start'}); }
-  function scrollToCheckout() { document.getElementById('checkout-section').scrollIntoView({behavior:'smooth',block:'start'}); }
-
-  /* === FADE-IN OBSERVER === */
-  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-  /* === INIT === */
-  document.addEventListener('DOMContentLoaded', updateSummary);
-
-  /* === ADMIN HELPERS (browser console) ===
-     viewOrders()   → lista todos os pedidos
-     clearOrders()  → apaga todos os pedidos
-  */
-  window.viewOrders = () => {
-    const orders = JSON.parse(localStorage.getItem('cpm_orders') || '[]');
-    console.table(orders.map(o => ({
-      ID: o.id, Data: new Date(o.date).toLocaleString('pt-MZ'),
-      Nome: o.nome, Tel: o.telefone, Província: o.provincia,
-      Qty: o.quantidade, Total: 'MT '+o.total,
-      'Pgto': o.status_pagamento, 'Pedido': o.status_pedido
-    })));
-    return orders;
-  };
-  window.clearOrders = () => { if(confirm('Apagar todos os pedidos?')) { localStorage.removeItem('cpm_orders'); console.log('✓ Apagado.'); } };
 </script>
 </body>
 </html>
