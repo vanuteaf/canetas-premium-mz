@@ -979,7 +979,7 @@
         }
 
         if (zData.error?.message === 'Invalid uuid' || zData.error?.code === 'invalid_input' || zData.error?.code === 'wallet_not_found') {
-          showApiError('Insira o ID UUID da Carteira 312584 obtido no Dashboard ZumboPay → Carteiras.');
+          showApiError('A API ZumboPay exige o ID UUID da sua Carteira 312584 para enviar a notificação PIN para o telemóvel do cliente.');
         }
       } catch (err) {
         console.error('Direct ZumboPay error:', err);
