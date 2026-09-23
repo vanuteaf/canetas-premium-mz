@@ -582,13 +582,14 @@
   <div class="checkout-modal-card">
     <div class="checkout-modal-header">
       <div>
-        <h3>Finalizar Pedido</h3>
+        <h3 id="modal-title">Finalizar Pedido</h3>
         <p style="font-size:0.75rem;color:var(--gray-400);margin:0;">Canetas Premium MZ</p>
       </div>
       <button class="checkout-modal-close" onclick="closeCheckout()">✕</button>
     </div>
 
     <div class="checkout-modal-body">
+      <!-- ETAPA 1: FORMULÁRIO -->
       <form id="checkout-form" novalidate onsubmit="submitOrder(event)">
         
         <!-- 1. SELEÇÃO DE QUANTIDADE (FORMATO "− 1 +") -->
@@ -599,106 +600,148 @@
             <div class="qty-value" id="qty-val">1</div>
             <button type="button" class="qty-btn" id="btn-plus" onclick="changeQty(1)" aria-label="Aumentar quantidade">+</button>
           </div>
-          <div class="qty-price-preview">
-            Preço: <strong id="stepper-total">120 MT</strong>
-            <span id="stepper-sub" style="font-size:0.75rem;color:var(--gray-400);margin-left:6px;">(1 × 120 MT)</span>
+          <div class="qty-stepper-price">
+            Preço: <span class="price-val" id="stepper-total">120 MT</span>
+            <span class="price-sub" id="stepper-sub">(1 × 120 MT)</span>
           </div>
         </div>
 
         <!-- 2. DADOS DE ENTREGA -->
-        <div style="margin-bottom:18px;">
-          <h4 style="font-size:0.85rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--gray-200);padding-bottom:6px;">
-            Dados de Entrega
-          </h4>
+        <div class="form-section-title">Dados de Entrega</div>
 
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome completo *</label>
+          <input class="form-input" type="text" id="nome" name="nome" placeholder="Seu nome completo" required autocomplete="name" />
+          <div class="form-error" id="nome-error">Nome completo é obrigatório (mínimo 3 letras).</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="telefone">Número de telefone *</label>
+          <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="Ex: 84 123 4567" required autocomplete="tel" />
+          <div class="form-error" id="telefone-error">Informe um número de telefone válido.</div>
+        </div>
+
+        <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="nome">Nome completo <span class="form-required">*</span></label>
-            <input type="text" id="nome" class="form-input" placeholder="Seu nome completo" autocomplete="name">
-            <div class="form-error" id="nome-error">Nome completo obrigatório (mínimo 3 letras).</div>
+            <label class="form-label" for="provincia">Província *</label>
+            <select class="form-select" id="provincia" name="provincia" required>
+              <option value="">Selecione a província</option>
+              <option value="Cabo Delgado">Cabo Delgado</option>
+              <option value="Gaza">Gaza</option>
+              <option value="Inhambane">Inhambane</option>
+              <option value="Manica">Manica</option>
+              <option value="Maputo">Maputo</option>
+              <option value="Maputo Cidade">Maputo Cidade</option>
+              <option value="Nampula">Nampula</option>
+              <option value="Niassa">Niassa</option>
+              <option value="Sofala">Sofala</option>
+              <option value="Tete">Tete</option>
+              <option value="Zambézia">Zambézia</option>
+            </select>
+            <div class="form-error" id="provincia-error">Selecione uma província.</div>
           </div>
-
           <div class="form-group">
-            <label class="form-label" for="telefone">Número de telefone <span class="form-required">*</span></label>
-            <input type="tel" id="telefone" class="form-input" placeholder="Ex: 84 123 4567" inputmode="tel" autocomplete="tel">
-            <div class="form-error" id="telefone-error">Número de telefone válido obrigatório.</div>
+            <label class="form-label" for="cidade">Cidade/Distrito *</label>
+            <input class="form-input" type="text" id="cidade" name="cidade" placeholder="Ex: Maputo, Matola, Beira" required />
+            <div class="form-error" id="cidade-error">Informe a cidade ou distrito.</div>
           </div>
+        </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="provincia">Província <span class="form-required">*</span></label>
-              <select id="provincia" class="form-select">
-                <option value="">Selecione a Província</option>
-                <option>Cabo Delgado</option><option>Gaza</option><option>Inhambane</option>
-                <option>Manica</option><option>Maputo</option><option>Maputo Cidade</option>
-                <option>Nampula</option><option>Niassa</option><option>Sofala</option>
-                <option>Tete</option><option>Zambézia</option>
-              </select>
-              <div class="form-error" id="provincia-error">Selecione a província de entrega.</div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="cidade">Cidade / Distrito <span class="form-required">*</span></label>
-              <input type="text" id="cidade" class="form-input" placeholder="Ex: Maputo, Matola, Beira">
-              <div class="form-error" id="cidade-error">Cidade ou distrito obrigatório.</div>
-            </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="bairro">Bairro *</label>
+            <input class="form-input" type="text" id="bairro" name="bairro" placeholder="Seu bairro" required />
+            <div class="form-error" id="bairro-error">Informe o bairro.</div>
           </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="bairro">Bairro <span class="form-required">*</span></label>
-              <input type="text" id="bairro" class="form-input" placeholder="Seu bairro">
-              <div class="form-error" id="bairro-error">Bairro obrigatório.</div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="referencia">Local de entrega / referência <span class="form-required">*</span></label>
-              <input type="text" id="referencia" class="form-input" placeholder="Perto da escola, mercado, etc.">
-              <div class="form-error" id="referencia-error">Local de entrega / referência obrigatório.</div>
-            </div>
+          <div class="form-group">
+            <label class="form-label" for="referencia">Local de entrega/referência *</label>
+            <input class="form-input" type="text" id="referencia" name="referencia" placeholder="Ex: Perto da escola, casa nº..." required />
+            <div class="form-error" id="referencia-error">Informe o local ou ponto de referência.</div>
           </div>
         </div>
 
         <!-- 3. RESUMO DO PEDIDO -->
-        <div class="checkout-summary">
-          <div style="font-weight:700;margin-bottom:6px;border-bottom:1px solid var(--gray-200);padding-bottom:4px;">Resumo do Pedido</div>
-          <div class="checkout-summary-row"><span style="color:var(--gray-500);">Produto:</span><span style="font-weight:600;">Canetas Premium</span></div>
-          <div class="checkout-summary-row"><span style="color:var(--gray-500);">Quantidade:</span><span style="font-weight:600;" id="sum-qty">1 unidade</span></div>
-          <div class="checkout-summary-row"><span style="color:var(--gray-500);">Preço unitário:</span><span style="font-weight:600;">120 MT</span></div>
-          <div class="checkout-summary-row total"><span>Total:</span><span id="sum-total">120 MT</span></div>
+        <div class="order-summary-box">
+          <div class="order-summary-title">Resumo do Pedido</div>
+          <div class="order-summary-row"><span>Produto:</span><span>Canetas Premium</span></div>
+          <div class="order-summary-row"><span>Quantidade:</span><span id="sum-qty">1 unidade</span></div>
+          <div class="order-summary-row"><span>Preço unitário:</span><span>120 MT</span></div>
+          <div class="order-summary-row total"><span>Total a pagar:</span><span id="sum-total">120 MT</span></div>
         </div>
 
         <!-- 4. MÉTODO DE PAGAMENTO: EXCLUSIVAMENTE M-PESA -->
-        <div style="margin-bottom:20px;">
-          <h4 style="font-size:0.85rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--gray-200);padding-bottom:6px;">
-            Método de Pagamento
-          </h4>
-
-          <div class="mpesa-card">
-            <div class="mpesa-logo-badge">
-              <img src="images/mpesa-logo.jpg" alt="Vodacom M-Pesa" style="width:46px;height:46px;border-radius:8px;object-fit:contain;border:1px solid rgba(0,0,0,0.1);">
-              <div>
-                <div class="mpesa-info-title">M-Pesa <span style="font-size:0.65rem;background:#ffebee;color:#c62828;padding:2px 6px;border-radius:10px;margin-left:4px;font-weight:700;">Vodacom</span></div>
-                <div class="mpesa-info-sub">Pagamento móvel direto e seguro</div>
-              </div>
+        <div class="form-section-title">Método de Pagamento</div>
+        
+        <div class="payment-method-card selected">
+          <div class="payment-method-left">
+            <img class="payment-logo" src="images/mpesa-logo.jpg" alt="Vodacom M-Pesa" />
+            <div>
+              <div class="payment-method-name">M-Pesa <span class="badge-vodacom">Vodacom</span></div>
+              <div class="payment-method-sub">Pagamento móvel rápido e seguro</div>
             </div>
-            <div class="mpesa-check"></div>
+          </div>
+          <div class="payment-radio"></div>
+        </div>
+
+        <div class="form-group" style="margin-top:16px;">
+          <label class="form-label" for="pay-phone">Número de telefone M-Pesa para pagamento *</label>
+          <input class="form-input" type="tel" id="pay-phone" name="pay_phone" placeholder="Ex: 84 123 4567 ou 85 123 4567" required autocomplete="tel" />
+          <div class="form-error" id="pay-phone-error">Informe o número de telefone M-Pesa para debitar o pagamento.</div>
+        </div>
+
+        <button type="submit" class="btn-pay" id="btn-pay">PAGAR AGORA</button>
+        <p style="text-align:center;font-size:0.75rem;color:var(--gray-400);margin-top:10px;margin-bottom:0;">
+          🔒 Pagamento processado com segurança via Vodacom M-Pesa (ZumboPay).
+        </p>
+      </form>
+
+      <!-- ETAPA 2: PROCESSAMENTO USSD & DIGITAÇÃO DO PIN -->
+      <div id="processing-view" style="display:none;padding:10px 0;text-align:center;">
+        
+        <div style="background:#111;color:#fff;padding:20px;border-radius:16px;border:1px solid #333;text-align:left;margin-bottom:20px;box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+          <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222;padding-bottom:10px;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="width:10px;height:10px;background:#e60000;border-radius:50%;display:inline-block;"></span>
+              <span style="font-size:0.75rem;font-weight:700;color:#e60000;text-transform:uppercase;letter-spacing:1px;">Vodacom M-Pesa USSD</span>
+            </div>
+            <span style="font-size:0.75rem;color:#888;">Canetas Premium MZ</span>
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="pay-phone">Número M-Pesa para pagamento <span class="form-required">*</span></label>
-            <input type="tel" id="pay-phone" class="form-input" placeholder="Ex: 84 000 0000 ou 85 000 0000" inputmode="tel">
-            <div class="form-error" id="pay-phone-error">Introduza o número M-Pesa válido.</div>
+          <div style="background:#1a1a1a;padding:14px;border-radius:10px;border:1px solid #2a2a2a;margin-bottom:14px;font-family:monospace;font-size:0.8rem;line-height:1.5;">
+            <div style="color:#aaa;">📱 Notificação enviada para: <strong style="color:#fff;" id="ussd-phone">+258 84...</strong></div>
+            <div style="color:#aaa;">💰 Valor a debitar: <strong style="color:#C9A84C;" id="ussd-total">120.00 MT</strong></div>
+            <div style="background:#0a0a0a;padding:10px;border-radius:6px;border:1px solid #333;margin-top:8px;color:#eee;">
+              "Deseja pagar <span id="ussd-msg-total">120</span>.00 MT a Canetas Premium MZ? Digite o seu PIN secreto de 4 dígitos no telemóvel para autorizar."
+            </div>
+          </div>
+
+          <div style="font-size:0.8rem;color:#bbb;display:flex;flex-direction:column;gap:8px;">
+            <div>1️⃣ Desbloqueie o telemóvel com o número <strong id="ussd-step-phone">M-Pesa</strong>.</div>
+            <div>2️⃣ Digite o seu <strong>PIN de 4 dígitos</strong> na notificação M-Pesa que surgiu no ecrã.</div>
+            <div>3️⃣ Prima <strong>Enviar / Confirmar</strong> e clique no botão abaixo para concluir.</div>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg btn-full" id="btn-pay" style="font-size:1rem;padding:18px;">
-          PAGAR AGORA
+        <div style="background:#f9f9f9;border:1px solid #eee;border-radius:12px;padding:16px;margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem;font-weight:600;color:#444;margin-bottom:8px;">
+            <span>Aguardando autorização via PIN...</span>
+            <span id="ussd-countdown">60s</span>
+          </div>
+          <div style="width:100%;height:8px;background:#ddd;border-radius:4px;overflow:hidden;">
+            <div id="ussd-progress-bar" style="width:100%;height:100%;background:#C9A84C;transition:width 1s linear;"></div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-pay" onclick="confirmOrderSuccess()" style="margin-bottom:10px;font-size:0.85rem;">
+          ✓ JÁ INTRODUZI O PIN / CONFIRMAR PAGAMENTO
         </button>
 
-        <p style="text-align:center;font-size:0.75rem;color:var(--gray-400);margin-top:12px;">
-          🔒 Pagamento processado com segurança através da rede Vodacom M-Pesa.
-        </p>
-      </form>
+        <div style="display:flex;gap:10px;">
+          <button type="button" class="btn btn-outline" onclick="resendUssd()" style="flex:1;font-size:0.75rem;padding:10px;">🔄 Reenviar Notificação</button>
+          <button type="button" class="btn btn-outline" onclick="backToForm()" style="flex:1;font-size:0.75rem;padding:10px;">← Alterar Dados</button>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
@@ -759,13 +802,18 @@
   /* === STATE === */
   let qty = 1;
   const PRICE = 120;
+  let currentOrder = null;
+  let timerInterval = null;
+  let timeLeft = 60;
 
   function openCheckout() {
+    backToForm();
     document.getElementById('checkout-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeCheckout() {
+    if (timerInterval) clearInterval(timerInterval);
     document.getElementById('checkout-modal').classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -777,9 +825,9 @@
     document.getElementById('qty-val').textContent = qty;
     const total = qty * PRICE;
     document.getElementById('stepper-total').textContent = total + ' MT';
-    document.getElementById('stepper-sub').textContent = `(${qty} × 120 MT)`;
-    document.getElementById('sum-qty').textContent = `${qty} ${qty === 1 ? 'unidade' : 'unidades'}`;
-    document.getElementById('sum-total').textContent = `${total} MT`;
+    document.getElementById('stepper-sub').textContent = '(' + qty + ' × 120 MT)';
+    document.getElementById('sum-qty').textContent = qty + (qty === 1 ? ' unidade' : ' unidades');
+    document.getElementById('sum-total').textContent = total + ' MT';
   }
 
   /* === VALIDATION === */
@@ -804,16 +852,15 @@
     return ok;
   }
 
-  /* === SUBMIT ORDER === */
+  /* === SUBMIT ORDER & TRANSITION TO USSD PROCESSING === */
   async function submitOrder(e) {
     e.preventDefault();
     if (!validateAll()) return;
 
-    const btn = document.getElementById('btn-pay');
-    btn.disabled = true;
-    btn.textContent = 'A PROCESSAR PAGAMENTO...';
+    const total = qty * PRICE;
+    const payPhone = document.getElementById('pay-phone').value.trim();
 
-    const order = {
+    currentOrder = {
       id: 'CPM-' + Date.now().toString(36).toUpperCase(),
       date: new Date().toISOString(),
       nome: document.getElementById('nome').value.trim(),
@@ -823,36 +870,83 @@
       bairro: document.getElementById('bairro').value.trim(),
       referencia: document.getElementById('referencia').value.trim(),
       quantidade: qty,
-      total: qty * PRICE,
-      metodo: 'M-Pesa',
-      tel_pagamento: document.getElementById('pay-phone').value.trim(),
-      status_pagamento: 'confirmado',
+      total: total,
+      metodo: 'M-Pesa (Vodacom)',
+      tel_pagamento: payPhone,
+      status_pagamento: 'Aguardando PIN',
       status_pedido: 'em_processamento'
     };
 
-    // Chamada real ao gateway configurado no projeto
+    // Transition to processing screen
+    document.getElementById('checkout-form').style.display = 'none';
+    document.getElementById('processing-view').style.display = 'block';
+    document.getElementById('modal-title').textContent = 'Autorização M-Pesa';
+
+    document.getElementById('ussd-phone').textContent = '+258 ' + payPhone;
+    document.getElementById('ussd-step-phone').textContent = '+258 ' + payPhone;
+    document.getElementById('ussd-total').textContent = total + '.00 MT';
+    document.getElementById('ussd-msg-total').textContent = total;
+
+    startCountdown();
+
     try {
-      await fetch('/api/pagamento', {
+      fetch('/api/pagamento', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ amount: order.total, msisdn: order.tel_pagamento, ref: order.id, gateway: 'mpesa' })
+        body: JSON.stringify({ amount: currentOrder.total, msisdn: currentOrder.tel_pagamento, ref: currentOrder.id, gateway: 'mpesa' })
       });
     } catch (_) {}
+  }
 
-    // Grava no localStorage
+  function startCountdown() {
+    if (timerInterval) clearInterval(timerInterval);
+    timeLeft = 60;
+    document.getElementById('ussd-countdown').textContent = '60s';
+    document.getElementById('ussd-progress-bar').style.width = '100%';
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        document.getElementById('ussd-countdown').textContent = '0s';
+        document.getElementById('ussd-progress-bar').style.width = '0%';
+      } else {
+        document.getElementById('ussd-countdown').textContent = timeLeft + 's';
+        document.getElementById('ussd-progress-bar').style.width = (timeLeft / 60 * 100) + '%';
+      }
+    }, 1000);
+  }
+
+  function resendUssd() {
+    startCountdown();
+  }
+
+  function backToForm() {
+    if (timerInterval) clearInterval(timerInterval);
+    document.getElementById('checkout-form').style.display = 'block';
+    document.getElementById('processing-view').style.display = 'none';
+    document.getElementById('modal-title').textContent = 'Finalizar Pedido';
+  }
+
+  function confirmOrderSuccess() {
+    if (!currentOrder) return;
+    if (timerInterval) clearInterval(timerInterval);
+
+    currentOrder.status_pagamento = 'confirmado';
+
     try {
       const orders = JSON.parse(localStorage.getItem('cpm_orders') || '[]');
-      orders.push(order);
+      orders.push(currentOrder);
       localStorage.setItem('cpm_orders', JSON.stringify(orders));
     } catch (_) {}
 
     closeCheckout();
-    showConfirmation(order);
+    showConfirmation(currentOrder);
   }
 
   function showConfirmation(o) {
     document.querySelectorAll('#top-bar,#header,section,footer,#trust-strip,#mobile-bar,#whatsapp-btn').forEach(el => el.style.display = 'none');
-    document.getElementById('conf-order-id').textContent = 'Pedido ' + o.id;
+    document.getElementById('conf-order-id').textContent = 'Pedido #' + o.id;
     document.getElementById('c-qty').textContent = o.quantidade + (o.quantidade===1?' unidade':' unidades');
     document.getElementById('c-nome').textContent = o.nome;
     document.getElementById('c-tel').textContent = o.telefone;
@@ -860,9 +954,9 @@
     document.getElementById('c-cidade').textContent = o.cidade;
     document.getElementById('c-bairro').textContent = o.bairro;
     document.getElementById('c-ref').textContent = o.referencia;
-    document.getElementById('c-total').textContent = 'MT ' + o.total;
-    const msg = encodeURIComponent(`Olá! Pedido ${o.id}: ${o.quantidade} Canetas Premium (Total: MT ${o.total}) via M-Pesa. Preciso de suporte.`);
-    document.getElementById('c-whatsapp').href = `https://wa.me/258000000000?text=${msg}`;
+    document.getElementById('c-total').textContent = o.total + ' MT';
+    const msg = encodeURIComponent('Olá! Fiz o pedido #' + o.id + ' de ' + o.quantidade + ' Canetas Premium (Total: ' + o.total + ' MT) via M-Pesa. Seguem os dados para entrega.');
+    document.getElementById('c-whatsapp').href = 'https://wa.me/258000000000?text=' + msg;
     const conf = document.getElementById('confirmation-page');
     conf.classList.remove('hidden');
     conf.style.display = 'flex';
