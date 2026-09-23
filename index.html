@@ -712,13 +712,8 @@
           Confirme o pagamento no M-Pesa.
         </p>
 
-        <div id="api-error-box" style="display:none;padding:12px;background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:10px;font-size:0.8rem;text-align:left;max-width:320px;margin:0 auto 16px;">
-          <strong>💡 Configuração da Carteira ZumboPay (312584):</strong> <span id="api-error-msg">Insira o ID UUID da carteira ZumboPay.</span>
-          <div id="api-key-config" style="margin-top:10px;padding-top:8px;border-top:1px solid #fcd34d;">
-            <label style="display:block;font-size:0.75rem;font-weight:700;color:#111827;margin-bottom:4px;">ID UUID da Carteira ZumboPay (do Dashboard):</label>
-            <input type="text" id="manual-wallet-uuid" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" style="width:100%;padding:6px;font-size:0.75rem;border:1px solid #d1d5db;border-radius:6px;font-family:monospace;box-sizing:border-box;">
-            <button type="button" onclick="retryPaymentWithWallet()" style="margin-top:8px;width:100%;padding:6px;background:#C9A84C;color:#0a0a0a;font-weight:700;font-size:0.75rem;border:none;border-radius:6px;cursor:pointer;">Tentar Cobrança Novamente</button>
-          </div>
+        <div id="api-error-box" style="display:none;padding:10px 14px;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:10px;font-size:0.8rem;text-align:center;max-width:320px;margin:0 auto 16px;">
+          <span id="api-error-msg"></span>
         </div>
 
         <div style="background:#f9fafb;padding:16px;border-radius:12px;border:1px solid #e5e7eb;text-align:left;font-size:0.8rem;max-width:320px;margin:0 auto 20px;">
@@ -810,7 +805,7 @@
   const PRICE = 120;
   let currentOrder = null;
   let pollingInterval = null;
-  let customWallet = (function(){ try { return localStorage.getItem('zumbopay_wallet_uuid') || ''; } catch(_) { return ''; } })();
+  const MPESA_WALLET_ID = 'ea445283-c3d8-4a34-a90d-13e4f116b752'; // Carteira M-Pesa 312584 (KlonePay)
 
   function openCheckout() {
     backToForm();
@@ -901,12 +896,7 @@
     sendPaymentAndPoll(currentOrder);
   }
 
-  function retryPaymentWithWallet() {
-    const val = document.getElementById('manual-wallet-uuid').value.trim();
-    if (val) {
-      customWallet = val;
-      try { localStorage.setItem('zumbopay_wallet_uuid', val); } catch(_) {}
-    }
+      }
     document.getElementById('api-error-box').style.display = 'none';
     if (currentOrder) sendPaymentAndPoll(currentOrder);
   }
@@ -923,8 +913,7 @@
           msisdn: order.tel_pagamento,
           ref: order.id,
           customer_name: order.nome,
-          order_details: order,
-          wallet_uuid: customWallet || undefined
+          order_details: order
         })
       });
 
@@ -939,8 +928,8 @@
         }
       } else {
         const errData = await res.json().catch(() => ({}));
-        if (errData.error?.message === 'Invalid uuid' || errData.error?.code === 'invalid_input') {
-          showApiError('Insira o ID UUID da Carteira 312584 obtido no Dashboard ZumboPay.');
+        if (errData.message) {
+          showApiError(errData.message);
         }
       }
     } catch (_) {
@@ -948,7 +937,6 @@
       try {
         const apiKey = 'zk_live_84b0076d67b5f4cd50969d13906e1e562c4bec28c06e35aa';
         const formattedPhone = normalizePhone(order.tel_pagamento);
-        const targetWallet = customWallet || '312584';
 
         const zRes = await fetch('https://zumbopay.com/api/public/v1/charges', {
           method: 'POST',
@@ -960,7 +948,7 @@
             'Idempotency-Key': order.id
           },
           body: JSON.stringify({
-            wallet_id: targetWallet,
+            wallet_id: MPESA_WALLET_ID,
             amount: order.total,
             msisdn: formattedPhone,
             customer_name: order.nome,
@@ -976,10 +964,8 @@
 
         if (zRes.status === 202 || zData.data?.status === 'pending') {
           zumboRef = zData.data?.reference;
-        }
-
-        if (zData.error?.message === 'Invalid uuid' || zData.error?.code === 'invalid_input' || zData.error?.code === 'wallet_not_found') {
-          showApiError('A API ZumboPay exige o ID UUID da sua Carteira 312584 para enviar a notificação PIN para o telemóvel do cliente.');
+        } else if (zData.error?.message) {
+          showApiError(zData.error.message);
         }
       } catch (err) {
         console.error('Direct ZumboPay error:', err);
